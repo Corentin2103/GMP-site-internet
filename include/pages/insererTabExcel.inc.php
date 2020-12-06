@@ -8,15 +8,20 @@
 </form>
 <?php
 function lire_csv($nom_fichier,$separateur){
-  $donnee = array();
+
   $result = array();
   $fichier = fopen($nom_fichier,'r');
-  $i = 1;
+  $compteur = 1;
+  $i = "var".$compteur;
   $taille=filesize($nom_fichier)+1;
 
-  while($donnee = fgetcsv($fichier,$taille,$separateur)){
+  while($compteur < 10){
+    $donnee = fgetc($fichier);
+    if($donnee != ';'){
     $result[$i]=$donnee;
-    $i++;
+    $compteur++;
+    $i = "var".$compteur;
+  }
   }
   fclose($fichier);
   return $result;
