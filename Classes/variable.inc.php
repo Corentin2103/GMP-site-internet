@@ -41,10 +41,10 @@ public function setVar1($valeur){
         $this->$var1=$valeur;
     }
 
-public function getVar1() {
+public function getVar2() {
         return $this->$var1;
     }
-public function setVar1($valeur){
+public function setVar2($valeur){
         $this->$var1=$valeur;
     }
 
