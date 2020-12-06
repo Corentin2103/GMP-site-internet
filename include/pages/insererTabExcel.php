@@ -15,16 +15,6 @@ $fileName = "Excel/".$uniqueName.$fileExt;
 $result = move_uploaded_file($tmpName, $fileName);
 
 
-
-
-?>
-
-<form action ="#" method = "post" id = "insererTabExcell">
-  <input type="file" name="uploaded_file"/><br/>
-  <input type="submit" name="submit"/><br/>
-</form>
-
-<?php
 if (isset($_POST["submit"])){
   $maxSize = 50000;
   $validExt=array('.xls');
@@ -61,18 +51,20 @@ if (isset($_POST["submit"])){
     <?php
     $fichier = fopen('Excel/'.$uniqueName.$fileExt,'r');
     $i = 1;
+    $taille=filesize('Excel/'.$uniqueName.$fileExt)+1;
 
-
-
-    while($i <= 20){
+    while($donnee = fgetcsv($fichier,$taille,";")){
 
     $ligne = fgetc($fichier);
 
     if($ligne != ';'){
       echo $ligne."<br/>";
+
       /*Ajout a la bdd*/
-      $db = new MyPdo();
-      
+      $db = new Mypdo();
+      $variableManager=new VariableManager($db);
+      $variable = new Variable();
+
     }else{
       echo " ";
   }

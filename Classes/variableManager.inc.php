@@ -15,6 +15,14 @@ class VilleManager{
           return $retour;
       }
 
+    function lire_csv($nom_fichier,$separateur){
+      $fichier = fopen($nom_fichier,'r');
+      $i = 1;
+      $taille=filesize('Excel/'.$uniqueName.$fileExt)+1;
+
+      while($donnee = fgetcsv($fichier,$taille,$separateur)){
+        
+      }
 
 
 }
