@@ -12,7 +12,7 @@ function lire_csv($nom_fichier,$separateur){
   $result = array();
   $fichier = fopen($nom_fichier,'r');
   $compteur = 1;
-  $i = "var".$compteur;
+  $i = "variable".$compteur;
   $taille=filesize($nom_fichier)+1;
 
   while($compteur < 10){
@@ -20,7 +20,7 @@ function lire_csv($nom_fichier,$separateur){
     if($donnee != ';'){
     $result[$i]=$donnee;
     $compteur++;
-    $i = "var".$compteur;
+    $i = "variable".$compteur;
   }
   }
   fclose($fichier);
