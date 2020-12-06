@@ -75,9 +75,9 @@ if (isset($_POST["submit"])){
     $donnees = lire_csv('Excel/'.$uniqueName.$fileExt);
     print_r($donnees);
     $db =new PDO("mysql:host=localhost; dbname=pt_gmp","root","");
-    $variable = new Variable();
-    $variable->setVar1($donnees["variable1"]);
+    $variable = new Variable($donnees);
     print_r($variable);
+    $variable->setVar1($donnees["variable1"]);
     $variableManager = new VariableManager($db);
     $result =$variableManager->add($variable);
 
