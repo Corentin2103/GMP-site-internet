@@ -1,6 +1,6 @@
 <h1>Ajouter des variables</h1>
 
-<<<<<<< HEAD
+
 <form action ="#" method = "post" enctype="multipart/form-data" id = "insererTabExcell">
   <input type="file" name="upload_file"></br>
   <input type="submit" name="Valider" value="Valider">
@@ -70,6 +70,9 @@ if (isset($_POST["submit"])){
 
     if($ligne != ';'){
       echo $ligne."<br/>";
+      /*Ajout a la bdd*/
+      $db = new MyPdo();
+      
     }else{
       echo " ";
   }
