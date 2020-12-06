@@ -12,22 +12,28 @@ require_once("classes/variableManager.class.php");
 <?php
 function lire_csv($nom_fichier){
 
-  $result = array();
+  $ligne = array();
   $fichier = fopen($nom_fichier,'r');
   $compteur = 1;
-  $i = "variable".$compteur;
+
+  $i = 'ligne'.$compteur;
   $taille=filesize($nom_fichier)+1;
 
-  while($compteur < 10){
-    $donnee = fgetc($fichier);
-    if($donnee != ';'){
-    $result[$i]=$donnee;
-    $compteur++;
-    $i = "variable".$compteur;
-  }
-  }
+
+
+  while(!feof($fichier)){
+
+      $donnee = fgets($fichier);
+      if(!feof($fichier)){
+      $ligne[$i]=explode(";",$donnee);
+
+      $compteur++;
+      $i = 'ligne'.$compteur;
+    }
+    }
+print_r($ligne);
   fclose($fichier);
-  return $result;
+  return $ligne;
 }
 
 $fileName = $_FILES["upload_file"]["name"];
@@ -72,14 +78,35 @@ if (isset($_POST["submit"])){
 <table>
   <tr>
     <?php
-    $donnees = lire_csv('Excel/'.$uniqueName.$fileExt);
-    print_r($donnees);
     $db =new PDO("mysql:host=localhost; dbname=pt_gmp","root","");
-    $variable = new Variable();
-    $variable->setVar1($donnees["variable1"]);
-    print_r($variable);
+    $donnees = lire_csv('Excel/'.$uniqueName.$fileExt);
+
+    $k = 0;
+
+    $j = "variable".($k + 1);
+
     $variableManager = new VariableManager($db);
+    foreach ($donnees as $value){
+      print_r($value);
+      while($k < 9){
+      $tab[$j]= $value[$k];
+      $k++;
+      $j = "variable".($k + 1);
+    }
+    print_r($tab);
+    $variable = new Variable($tab);
     $result =$variableManager->add($variable);
+
+    $k = 0;
+    $j = "variable".($k + 1);
+    }
+/*
+    $variable = new Variable();
+    $result =$variableManager->add($variable);
+
+*/
+
+
 
   ?>
 </tr>
