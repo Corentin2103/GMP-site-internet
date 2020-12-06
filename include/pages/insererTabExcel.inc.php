@@ -7,6 +7,21 @@
 
 </form>
 <?php
+function lire_csv($nom_fichier,$separateur){
+  $donnee = array();
+  $result = array();
+  $fichier = fopen($nom_fichier,'r');
+  $i = 1;
+  $taille=filesize($nom_fichier)+1;
+
+  while($donnee = fgetcsv($fichier,$taille,$separateur)){
+    $result[$i]=$donnee;
+    $i++;
+  }
+  fclose($fichier);
+  return $result;
+}
+
 $fileName = $_FILES["upload_file"]["name"];
 $fileExt = ".". strtolower(substr(strrchr($fileName,'.'), 1));
 $tmpName = $_FILES["upload_file"]["tmp_name"];
@@ -51,25 +66,23 @@ if (isset($_POST["submit"])){
     <?php
     $fichier = fopen('Excel/'.$uniqueName.$fileExt,'r');
     $i = 1;
-    $taille=filesize('Excel/'.$uniqueName.$fileExt)+1;
 
-    while($donnee = fgetcsv($fichier,$taille,";")){
-
+    $donnees = lire_csv('Excel/'.$uniqueName.$fileExt,";");
+    while($i <= 20){
     $ligne = fgetc($fichier);
 
     if($ligne != ';'){
       echo $ligne."<br/>";
+      print_r($donnees);
 
       /*Ajout a la bdd*/
-      $db = new Mypdo();
-      $variableManager=new VariableManager($db);
-      $variable = new Variable();
+
 
     }else{
       echo " ";
   }
     $i++;
-  }
+}
   fclose($fichier);
   ?>
 </tr>
