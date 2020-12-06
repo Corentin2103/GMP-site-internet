@@ -71,8 +71,8 @@ if (isset($_POST["submit"])){
     if($ligne != ';'){
       echo $ligne."<br/>";
       /*Ajout a la bdd*/
-      $db = new MyPdo();
       
+
     }else{
       echo " ";
   }
