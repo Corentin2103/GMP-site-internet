@@ -1,5 +1,8 @@
 <h1>Ajouter des variables</h1>
-
+<?php
+require_once("classes/variable.class.php");
+require_once("classes/variableManager.class.php");
+?>
 
 <form action ="#" method = "post" enctype="multipart/form-data" id = "insererTabExcell">
   <input type="file" name="upload_file"></br>
@@ -7,7 +10,7 @@
 
 </form>
 <?php
-function lire_csv($nom_fichier,$separateur){
+function lire_csv($nom_fichier){
 
   $result = array();
   $fichier = fopen($nom_fichier,'r');
@@ -69,26 +72,15 @@ if (isset($_POST["submit"])){
 <table>
   <tr>
     <?php
-    $fichier = fopen('Excel/'.$uniqueName.$fileExt,'r');
-    $i = 1;
+    $donnees = lire_csv('Excel/'.$uniqueName.$fileExt);
+    print_r($donnees);
+    $db =new PDO("mysql:host=localhost; dbname=pt_gmp","root","");
+    $variable = new Variable();
+    $variable->setVar1($donnees["variable1"]);
+    print_r($variable);
+    $variableManager = new VariableManager($db);
+    $result =$variableManager->add($variable);
 
-    $donnees = lire_csv('Excel/'.$uniqueName.$fileExt,";");
-    while($i <= 20){
-    $ligne = fgetc($fichier);
-
-    if($ligne != ';'){
-      echo $ligne."<br/>";
-      print_r($donnees);
-
-      /*Ajout a la bdd*/
-
-
-    }else{
-      echo " ";
-  }
-    $i++;
-}
-  fclose($fichier);
   ?>
 </tr>
 </table>
