@@ -22,19 +22,6 @@ class VariableManager{
           return $retour;
       }
 
-      function lire_csv($nom_fichier,$separateur){
-        $donnee = array();
-        $result = array();
-        $fichier = fopen($nom_fichier,'r');
-        $i = 0;
-        $taille=filesize($nom_fichier)+1;
-
-        while($donnee = fgetcsv($fichier,$taille,$separateur)){
-          $result[$i]=$donnee;
-          $i++;
-        }
-        fclose($fichier);
-        return $result;
-}
+      
 
 }

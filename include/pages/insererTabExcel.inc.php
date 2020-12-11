@@ -36,12 +36,7 @@ print_r($ligne);
   return $ligne;
 }
 
-$fileName = $_FILES["upload_file"]["name"];
-$fileExt = ".". strtolower(substr(strrchr($fileName,'.'), 1));
-$tmpName = $_FILES["upload_file"]["tmp_name"];
-$uniqueName = md5(uniqid(rand(), true));
-$fileName = "Excel/".$uniqueName.$fileExt;
-$result = move_uploaded_file($tmpName, $fileName);
+
 
 
 if (isset($_POST["submit"])){
@@ -73,7 +68,15 @@ if (isset($_POST["submit"])){
   if($resultat){
     echo "Transfert terminé";
   }
-} ?>
+}
+if (isset($_POST["submit"])){
+  $fileName = $_FILES["upload_file"]["name"];
+  $fileExt = ".". strtolower(substr(strrchr($fileName,'.'), 1));
+  $tmpName = $_FILES["upload_file"]["tmp_name"];
+  $uniqueName = md5(uniqid(rand(), true));
+  $fileName = "Excel/".$uniqueName.$fileExt;
+  $result = move_uploaded_file($tmpName, $fileName);
+?>
 
 <table>
   <tr>
@@ -100,14 +103,12 @@ if (isset($_POST["submit"])){
     $k = 0;
     $j = "variable".($k + 1);
     }
-/*
-    $variable = new Variable();
-    $result =$variableManager->add($variable);
 
-*/
+?>
 
 
-
-  ?>
 </tr>
 </table>
+<?php
+}
+  ?>
