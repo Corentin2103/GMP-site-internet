@@ -1,6 +1,11 @@
-
+<?php
+echo $_POST["libelle"];
+echo $_POST["formule"];
+ ?>
 <html>
    <head>
+
+     <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
       <script>
 
          //fonction qui évalue le chiffre et renvoie la sortie
@@ -21,17 +26,23 @@
              document.getElementById("output").value = ""
          }
          function Rentrer(){
-            let a = document.getElementById("output").value
-            let elt = document.getElementById('main');
-            elt.innerHTML = a;
+            let formule = document.getElementById("output").value
+            document.getElementById("Dispawn").style.display = "none";
+            document.getElementById("main").style.display = "block";
+            document.getElementById('fonction').value = formule;
+         }
+         function modifier(){
+
+          afficher()
+
          }
       </script>
       <style>
         td button{width:100%}
       </style>
    </head>
-   <body>
-      <table border="1">
+   <body id="body">
+      <table id="Dispawn" border="1">
          <tr>
 
             <td colspan="5"><input id="output"/></td>
@@ -70,8 +81,16 @@
             <td><button onclick="afficher('/')">/</button></td>
          </tr>
       </table>
-      <div id="main">
+      <div style="display:none;" id="main">
+        <form method="post" action="#">
+
+            <p>Libelle</p>
+            <input id="libelle" name="libelle"/>
+            <input id="fonction"  name="formule"/>
+          <input type="submit" value="Valider">
+      </form>
 
       </div>
+
    </body>
 </html>
