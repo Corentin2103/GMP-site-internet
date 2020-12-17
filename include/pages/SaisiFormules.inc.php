@@ -75,7 +75,7 @@ echo $_POST["formule"];
          <tr>
            <td><button onclick="afficher('²')">²</button></td>
            <td><button onclick="afficher('ln()')">ln()</button></td>
-            <td><button onclick="afficher('.')">.</button></td>
+           <td><button onclick="afficher('.')">.</button></td>
             <td><button onclick="afficher('0')">0</button></td>
             <td><button onclick="Rentrer(),effacer()">=</button></td>
             <td><button onclick="afficher('/')">/</button></td>
