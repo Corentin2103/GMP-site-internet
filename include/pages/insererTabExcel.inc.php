@@ -1,7 +1,9 @@
 <h1>Ajouter des variables</h1>
+<a href="include/pages/SaisiFormules.inc.php">Saisir des formules</a>
 <?php
 require_once("classes/variable.class.php");
 require_once("classes/variableManager.class.php");
+
 ?>
 
 <form action ="#" method = "post" enctype="multipart/form-data" id = "insererTabExcell">
@@ -10,6 +12,7 @@ require_once("classes/variableManager.class.php");
 
 </form>
 <?php
+
 function lire_csv($nom_fichier){
 
   $ligne = array();
@@ -31,12 +34,17 @@ function lire_csv($nom_fichier){
       $i = 'ligne'.$compteur;
     }
     }
-print_r($ligne);
+
   fclose($fichier);
   return $ligne;
 }
 
-
+$fileName = $_FILES["upload_file"]["name"];
+$fileExt = ".". strtolower(substr(strrchr($fileName,'.'), 1));
+$tmpName = $_FILES["upload_file"]["tmp_name"];
+$uniqueName = "Bonjour";
+$fileName = "Excel/".$uniqueName.$fileExt;
+$result = move_uploaded_file($tmpName, $fileName);
 
 
 if (isset($_POST["submit"])){
@@ -68,15 +76,7 @@ if (isset($_POST["submit"])){
   if($resultat){
     echo "Transfert terminé";
   }
-}
-if (isset($_POST["submit"])){
-  $fileName = $_FILES["upload_file"]["name"];
-  $fileExt = ".". strtolower(substr(strrchr($fileName,'.'), 1));
-  $tmpName = $_FILES["upload_file"]["tmp_name"];
-  $uniqueName = md5(uniqid(rand(), true));
-  $fileName = "Excel/".$uniqueName.$fileExt;
-  $result = move_uploaded_file($tmpName, $fileName);
-?>
+} ?>
 
 <table>
   <tr>
@@ -90,25 +90,29 @@ if (isset($_POST["submit"])){
 
     $variableManager = new VariableManager($db);
     foreach ($donnees as $value){
-      print_r($value);
+
       while($k < 9){
       $tab[$j]= $value[$k];
       $k++;
       $j = "variable".($k + 1);
     }
-    print_r($tab);
+
     $variable = new Variable($tab);
     $result =$variableManager->add($variable);
 
     $k = 0;
     $j = "variable".($k + 1);
     }
+/*
+    $variable = new Variable();
+    $result =$variableManager->add($variable);
+
+*/
 
 ?>
-
 
 </tr>
 </table>
 <?php
-}
+
   ?>
