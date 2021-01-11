@@ -10,7 +10,8 @@
 	<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
-	<form method="post">
+	<form action="index.php?page=3" method="post">
+        <input name="title" type="text">
 		<!-- Create the editor container -->
 		<div class="row form-group">
 			<div id="editor-container"></div>
@@ -36,8 +37,7 @@
 
         about.value = JSON.stringify(quill.getContents());
 
-        var data = JSON.parse(about.value);
-        // No back end to actually submit to!
+        var data = about.value;
 
         return false;
     };
