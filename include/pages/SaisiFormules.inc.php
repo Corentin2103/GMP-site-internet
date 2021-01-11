@@ -4,7 +4,7 @@ require_once("../../classes/FormuleManager.class.php");
 $db =new PDO("mysql:host=localhost; dbname=pt_gmp","root","");
 $formuleManager = new FormuleManager($db);
 if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
-
+/*Faire le controle au niveau du nom*/
   $formule = new Formule($_POST);
 
   $ajout = $formuleManager->add($formule);
@@ -119,7 +119,7 @@ echo $_POST["Equation"];
         <?php
 
         $listeFormule = $formuleManager->getAllForm();
-        
+
         foreach($listeFormule as $formule){ ?>
           <tr>
             <td><?php echo $formule->getNumEq() ?></td>
