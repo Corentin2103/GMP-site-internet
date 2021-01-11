@@ -9,9 +9,10 @@ class sujetManager{
 	}
 
 	public function add($sujet){
-		$requete = $this->db->prepare('INSERT INTO SUJET(sujet_file) VALUES(:sujet_file)');
+		$requete = $this->db->prepare('INSERT INTO SUJET(titre,sujet_file) VALUES(:titre,:sujet_file)');
 
 	$requete->bindValues(':sujet_file',$sujet->getSujet_File());
+	$requete->bindValues(':titre',$sujet->getTitre());
 
 	return $requete->execute();
 	}
