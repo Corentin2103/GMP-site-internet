@@ -24,3 +24,4 @@ var toolbarOptions = [
     ['clean']                                         // remove formatting button
 ];
 
+
