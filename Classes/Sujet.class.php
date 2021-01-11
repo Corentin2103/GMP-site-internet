@@ -12,13 +12,17 @@ class Sujet{
 	public function affecte($sujets){
 		foreach ($sujets as $attributs=>$valeurs){
 			switch($attributs){
-				case 'texte' : $this->setTexte($attributs);break;
+				case 'texte' : $this->setSujet_File($attributs);break;
 			}
 		}
 	}
 
-	public function setTexte($id){
+	public function setSujet_File($id){
 		$this->texte=$id;
+	}
+
+	public function getSujet_File(){
+		return $this->texte;
 	}
 }
 ?>
