@@ -22,27 +22,13 @@ if(empty($_SESSION["estConnecte"])){
 	<body>
 	<div id="header">
 		<div id="entete">
-			<div class="colonne">
-				<a href="index.php?page=0">
-					<img src="image/logo.png" alt="Logo covoiturage IUT" title="Logo covoiturage IUT Limousin" />
-				</a>
-			</div>
-			<div class="colonne">
-				Covoiturage de l'IUT,<br />Partagez plus que votre véhicule !!!
-			</div>
+			
 		</div>
-    <?php
-    if(!$_SESSION["estConnecte"]){
-    ?>
     <div id="connect">
-      <a href="index.php?page=11">Connexion</a>
+      <a href="index.php?page=1">inserer Tableau excel</a>
     </div>
-    <?php
-  }else{ ?>
     <div id="connect">
-      Utilisateur : <?php echo $_SESSION["Login"] ?>      <a href="index.php?page=12">Déconnexion</a>
+      <a href="index.php?page=2">Saisi formules</a>
     </div>
-    <?php
-  }
-    ?>
+
 	</div>

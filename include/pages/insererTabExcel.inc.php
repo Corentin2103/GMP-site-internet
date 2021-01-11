@@ -1,6 +1,9 @@
+
+
 <h1>Ajouter des variables</h1>
 <a href="include/pages/SaisiFormules.inc.php">Saisir des formules</a>
 <?php
+/*
 require_once("classes/variable.class.php");
 require_once("classes/variableManager.class.php");
 
@@ -116,3 +119,4 @@ if (isset($_POST["submit"])){
 <?php
 
   ?>
+*/

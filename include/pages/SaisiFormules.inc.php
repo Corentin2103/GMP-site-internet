@@ -1,6 +1,6 @@
 <?php
-require_once("../../classes/Formule.class.php");
-require_once("../../classes/FormuleManager.class.php");
+require_once("classes/Formule.class.php");
+require_once("classes/FormuleManager.class.php");
 $db =new PDO("mysql:host=localhost; dbname=pt_gmp","root","");
 $formuleManager = new FormuleManager($db);
 if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
@@ -55,6 +55,10 @@ echo $_POST["Equation"];
       </style>
    </head>
    <body id="body">
+     <?php
+     if(empty($_GET["num_eq"])){
+       ?>
+
       <table id="Dispawn" border="1">
          <tr>
 
@@ -125,11 +129,20 @@ echo $_POST["Equation"];
             <td><?php echo $formule->getNumEq() ?></td>
             <td><?php echo $formule->getLibEq() ?></td>
             <td><?php echo $formule->getEquation() ?></td>
+            <td><a href="index.php?page=2&num_eq=<?php echo $formule->getNumEq() ?>">Supprimer</a>
+            <td><?php ?></td>
           </tr>
         <?php
         }
         ?>
       </table>
+      <?php
+     }
+     if(!empty($_GET["num_eq"])){?>
+       <p>Formule supprimer</p>
 
+    <?php
+     }
+     ?>
    </body>
 </html>
