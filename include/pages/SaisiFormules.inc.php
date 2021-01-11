@@ -1,6 +1,17 @@
 <?php
-echo $_POST["libelle"];
-echo $_POST["formule"];
+require_once("../../classes/Formule.class.php");
+require_once("../../classes/FormuleManager.class.php");
+$db =new PDO("mysql:host=localhost; dbname=pt_gmp","root","");
+$formuleManager = new FormuleManager($db);
+if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
+
+  $formule = new Formule($_POST);
+
+  $ajout = $formuleManager->add($formule);
+echo $_POST["LibEq"];
+echo $_POST["Equation"];
+}
+
  ?>
 <html>
    <head>
@@ -26,10 +37,12 @@ echo $_POST["formule"];
              document.getElementById("output").value = ""
          }
          function Rentrer(){
-            let formule = document.getElementById("output").value
+            let Equation = document.getElementById("output").value
             document.getElementById("Dispawn").style.display = "none";
             document.getElementById("main").style.display = "block";
-            document.getElementById('fonction').value = formule;
+            document.getElementById('Equation').value = Equation;
+            window.open("insererTabExcel.inc.php", "", "width=200,height=100");
+
          }
          function modifier(){
 
@@ -85,12 +98,38 @@ echo $_POST["formule"];
         <form method="post" action="#">
 
             <p>Libelle</p>
-            <input id="libelle" name="libelle"/>
-            <input id="fonction"  name="formule"/>
+            <input id="LibEq" name="LibEq"/>
+            <input id="Equation"  name="Equation"/>
           <input type="submit" value="Valider">
       </form>
 
       </div>
+      <table>
+        <tr>
+          <th>
+            Numéro équation
+          </th>
+          <th>
+            Libellé équation
+          </th>
+          <th>
+            équation
+          </th>
+        </tr>
+        <?php
+
+        $listeFormule = $formuleManager->getAllForm();
+        
+        foreach($listeFormule as $formule){ ?>
+          <tr>
+            <td><?php echo $formule->getNumEq() ?></td>
+            <td><?php echo $formule->getLibEq() ?></td>
+            <td><?php echo $formule->getEquation() ?></td>
+          </tr>
+        <?php
+        }
+        ?>
+      </table>
 
    </body>
 </html>
