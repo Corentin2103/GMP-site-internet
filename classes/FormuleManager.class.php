@@ -26,6 +26,17 @@ class FormuleManager{
       $requete->closeCursor();
       return $listeFormule;
       }
-
+      public function getEq($num_eq){
+        $listeFormule = array();
+        $sql = 'select equation FROM formule where numEq="'.$num_eq.'"';
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+        while ($formule = $requete->fetch(PDO::FETCH_ASSOC)){
+        $listeFormule[] = $formule;
+      }
+      print_r($listeFormule);
+      $requete->closeCursor();
+      return $listeFormule;
+      }
 
 }

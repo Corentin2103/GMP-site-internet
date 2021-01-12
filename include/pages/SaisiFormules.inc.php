@@ -1,7 +1,7 @@
 <?php
 require_once("classes/Formule.class.php");
 require_once("classes/FormuleManager.class.php");
-$db =new PDO("mysql:host=localhost; dbname=pt_gmp","root","");
+$db =new MyPdo();
 $formuleManager = new FormuleManager($db);
 if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
 /*Faire le controle au niveau du nom*/
@@ -233,13 +233,16 @@ hr {
 
         $listeFormule = $formuleManager->getAllForm();
 
-        foreach($listeFormule as $formule){ ?>
+        foreach($listeFormule as $formule){
+          $equation = $formule->getEquation();
+          ?>
           <tr>
             <td><?php echo $formule->getNumEq() ?></td>
             <td><?php echo $formule->getLibEq() ?></td>
             <td><?php echo $formule->getEquation() ?></td>
             <td>
-            <button onclick="document.getElementById('id01').style.display='block'">Suprimer</button></a>
+
+              <button onclick="document.getElementById('id01').style.display='block'">Supprimer</button>
               <div id="id01" class="modal">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <form class="modal-content" action="">
@@ -259,13 +262,14 @@ hr {
         }
         ?>
       </table>
-      
+
       <?php
     }
 
-    if(!empty($_GET["SuppNum_eq"])){
+  if(!empty($_GET["SuppNum_eq"])){
       echo "Bonsoir";
     }
+
     if(!empty($_GET["ModifNum_eq"])){
       echo "bonjour";
     }
