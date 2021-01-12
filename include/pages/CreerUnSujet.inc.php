@@ -18,15 +18,18 @@
             <div id="editor-container"></div>
         </div>
         <div class="row">
-            <input type="submit" value="Sauvegarder">
+            <button onclick="transforme()">Sauvegarder</button>
         </div>
         <input name="about" type="hidden"/>
     </form>
+
     <!-- Initialize Quill editor -->
 	<?php
 }
+
 echo "test";
 if (!empty($_POST["about"])){
+	print_r($_POST["titre"]);
 	echo "test";
 	print_r($_POST);
 	$pdo = new Mypdo();
@@ -38,6 +41,16 @@ echo "test2";
 ?>
 </body>
 <script>
+function transforme(){
+	var form = document.querySelector('form');
+	var about = document.querySelector('input[name=about]');
+
+	about.value = JSON.stringify(quill.getContents());
+
+	alert("about " + about.value);
+
+	return false;
+}
     var quill = new Quill('#editor-container', {
         modules: {
             toolbar: toolbarOptions
@@ -45,7 +58,7 @@ echo "test2";
         theme: 'snow'
     });
 
-    var form = document.querySelector('form');
+    /*
     form.onsubmit = function() {
         // Populate hidden form on submit
         var about = document.querySelector('input[name=about]');
@@ -55,6 +68,6 @@ echo "test2";
         alert("about " + about.value);
 
         return false;
-    };
+    };*/
 </script>
 </html>
