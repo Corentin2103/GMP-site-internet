@@ -1,7 +1,7 @@
 <?php
 require_once("classes/Formule.class.php");
 require_once("classes/FormuleManager.class.php");
-$db =new PDO("mysql:host=localhost; dbname=pt_gmp","root","");
+$db =new MyPdo();
 $formuleManager = new FormuleManager($db);
 if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
 /*Faire le controle au niveau du nom*/

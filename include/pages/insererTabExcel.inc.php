@@ -86,7 +86,8 @@ if(!empty($_POST["Nom"])){
   <table>
     <tr>
       <?php
-      $db =new PDO("mysql:host=localhost; dbname=pt_gmp","root","");
+      $db = new MyPdo();
+      
       $donnees = lire_csv('Excel/'.$uniqueName.$fileExt);
 
       $k = 0;
