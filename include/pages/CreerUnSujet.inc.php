@@ -10,64 +10,43 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
-<?php if (empty($_POST["about"])) {?>
-    <form action="#" id="insert" method="post">
-        <input name="titre" type="text"/>
-        <!-- Create the editor container -->
-        <div class="row form-group">
-            <div id="editor-container"></div>
-        </div>
-        <div class="row">
-            <button onclick="transforme()">Sauvegarder</button>
-        </div>
-        <input name="about" type="hidden"/>
-    </form>
 
-    <!-- Initialize Quill editor -->
-	<?php
-}
-
-echo "test";
-if (!empty($_POST["about"])){
-	print_r($_POST["titre"]);
-	echo "test";
-	print_r($_POST);
+<form action="#" id="insert" method="post">
+    <input name="titre" type="text"/>
+    <!-- Create the editor container -->
+    <div class="row form-group">
+        <div id="editor-container"></div>
+    </div>
+    <div class="row">
+        <button onclick="transforme()">Sauvegarder</button>
+    </div>
+    <input name="sujet_file" type="hidden"/>
+</form>
+<?php
+if (!empty($_POST["sujet_file"])){
 	$pdo = new Mypdo();
 	$sujetManager = new sujetManager($pdo);
 	$sujet = new Sujet($_POST);
+	print_r($_POST);
 	print_r($sujet);
+	$sujetManager->add($sujet);
 }
-echo "test2";
 ?>
 </body>
 <script>
-function transforme(){
-	var form = document.querySelector('form');
-	var about = document.querySelector('input[name=about]');
+    function transforme(){
+        var form = document.querySelector('form');
+        var sujet_file = document.querySelector('input[name=sujet_file]');
 
-	about.value = JSON.stringify(quill.getContents());
+        sujet_file.value = JSON.stringify(quill.getContents());
 
-	alert("about " + about.value);
-
-	return false;
-}
+        return false;
+    }
     var quill = new Quill('#editor-container', {
         modules: {
             toolbar: toolbarOptions
         },
         theme: 'snow'
     });
-
-    /*
-    form.onsubmit = function() {
-        // Populate hidden form on submit
-        var about = document.querySelector('input[name=about]');
-
-        about.value = JSON.stringify(quill.getContents());
-
-        alert("about " + about.value);
-
-        return false;
-    };*/
 </script>
 </html>

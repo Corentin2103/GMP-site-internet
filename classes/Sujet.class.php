@@ -15,7 +15,7 @@ class Sujet{
 	public function affecte($sujets){
 		foreach ($sujets as $attributs=>$valeurs){
 			switch($attributs){
-				case 'texte' : $this->setSujet_File($attributs);break;
+				case 'sujet_file' : $this->setSujet_File($attributs);break;
 				case 'titre' : $this->setTitre($attributs);break;
 			}
 		}
@@ -28,7 +28,7 @@ class Sujet{
 	public function getSujet_File(){
 		return $this->texte;
 	}
-	
+
 	public function getTitre() {
 		return $this->titre;
 	}
