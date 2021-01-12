@@ -1,7 +1,7 @@
 <?php
 class Sujet{
 
-	private $texte;
+	private $sujet_file;
 	private $titre;
 
 
@@ -14,19 +14,19 @@ class Sujet{
 
 	public function affecte($sujets){
 		foreach ($sujets as $attributs=>$valeurs){
-			switch($attributs){
-				case 'sujet_file' : $this->setSujet_File($attributs);break;
-				case 'titre' : $this->setTitre($attributs);break;
+			switch($valeurs){
+				case 'sujet_file' : $this->setSujet_File($valeurs);break;
+				case 'titre' : $this->setTitre($valeurs);break;
 			}
 		}
 	}
 
 	public function setSujet_File($id){
-		$this->texte=$id;
+		$this->sujet_file=$id;
 	}
 
 	public function getSujet_File(){
-		return $this->texte;
+		return $this->sujet_file;
 	}
 
 	public function getTitre() {

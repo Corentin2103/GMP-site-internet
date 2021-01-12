@@ -27,6 +27,8 @@ if (!empty($_POST["sujet_file"])){
 	$pdo = new Mypdo();
 	$sujetManager = new sujetManager($pdo);
 	$sujet = new Sujet($_POST);
+  $sujet->setTitre($_POST["titre"]);
+  $sujet->setSujet_File($_POST["sujet_file"]);
 	print_r($_POST);
 	print_r($sujet);
 	$sujetManager->add($sujet);

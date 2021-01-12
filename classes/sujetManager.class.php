@@ -11,8 +11,8 @@ class sujetManager{
 	public function add($sujet){
 		$requete = $this->db->prepare('INSERT INTO SUJET(titre,sujet_file) VALUES(:titre,:sujet_file)');
 
-	$requete->bindValues(':sujet_file',$sujet->getSujet_File());
-	$requete->bindValues(':titre',$sujet->getTitre());
+	$requete->bindValue(':sujet_file',$sujet->getSujet_File());
+	$requete->bindValue(':titre',$sujet->getTitre());
 
 	return $requete->execute();
 	}
