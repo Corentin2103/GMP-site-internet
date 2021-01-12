@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a28171e7-7b71-4342-b275-f6fd39f6b3b9" name="Default Changelist" comment="Ajout transformation texte écrit dans quillJs en html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Sujet.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Sujet.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/sujetManager.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/sujetManager.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/CreerUnSujet.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/classes/CreerUnSujet.class.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +84,7 @@
       <workItem from="1608586704491" duration="5115000" />
       <workItem from="1609860761541" duration="19538000" />
       <workItem from="1610350312148" duration="22000" />
-      <workItem from="1610350435874" duration="7472000" />
+      <workItem from="1610350435874" duration="16335000" />
     </task>
     <task id="LOCAL-00001" summary="CreerUnSujet : texte en gras, italic et souligné">
       <created>1608218219535</created>
