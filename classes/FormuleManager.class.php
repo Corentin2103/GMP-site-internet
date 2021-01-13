@@ -7,10 +7,10 @@ class FormuleManager{
 		}
     public function add($variable){
           $requete = $this->db->prepare(
-          'INSERT INTO formule (Equation,LibEq) VALUES (:Equation,:LibEq);');
+          'INSERT INTO formule (Equation,LibEq,marge) VALUES (:Equation,:LibEq,:marge);');
           $requete->bindValue(':Equation',$variable->getEquation());
           $requete->bindValue(':LibEq',$variable->getLibEq());
-
+          $requete->bindValue(':marge',$variable->getMarge());
 
           $retour=$requete->execute();
           return $retour;
@@ -55,12 +55,12 @@ class FormuleManager{
 
       }
       public function updateFormule($formule){
-      $sql ='UPDATE formule SET numEq=:numEq,libEq=:libEq,equation=:equation where numEq= :numEq ';
+      $sql ='UPDATE formule SET numEq=:numEq,libEq=:libEq,equation=:equation,marge=:marge where numEq= :numEq ';
       $requete = $this->db->prepare($sql);
       $requete->bindValue(':numEq',$formule->getNumEq());
       $requete->bindValue(':libEq',$formule->getLibEq());
       $requete->bindValue(':equation',$formule->getEquation());
-
+      $requete->bindValue(':marge',$formule->getMarge());
       $retour = $requete->execute();
       $requete->closeCursor();
       return $retour;
@@ -81,6 +81,14 @@ class FormuleManager{
     public function getEqByLib($libEq){
 
       $sql = 'select equation FROM formule where libEq="'.$libEq.'"';
+      $requete = $this->db->prepare($sql);
+      $requete->execute();
+
+    return $requete->fetch();
+    }
+    public function getMarge($num_eq){
+
+      $sql = 'select marge FROM formule where numEq="'.$num_eq.'"';
       $requete = $this->db->prepare($sql);
       $requete->execute();
 
