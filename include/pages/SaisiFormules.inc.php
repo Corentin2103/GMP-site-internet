@@ -3,7 +3,7 @@ require_once("classes/Formule.class.php");
 require_once("classes/FormuleManager.class.php");
 $db =new MyPdo();
 $formuleManager = new FormuleManager($db);
-if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
+if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge"])){
 /*Faire le controle au niveau du nom*/
   $formule = new Formule($_POST);
 
@@ -24,7 +24,9 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
         <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}
-
+input{
+  width: 300px;
+}
 /* Set a style for all buttons */
 button {
 
@@ -152,7 +154,7 @@ hr {
             <td><button onclick="afficher('-')">-</button></td>
          </tr>
          <tr>
-           <td><button onclick="afficher('|x|')">| |</button></td>
+           <td><button onclick="afficher('abs()')">abs()</button></td>
            <td><button onclick="afficher('sin()')">sin()</button></td>
             <td><button onclick="afficher('7')">7</button></td>
             <td><button onclick="afficher('8')">8</button></td>
@@ -171,9 +173,10 @@ hr {
       <div style="display:none;" id="main">
         <form method="post" action="#">
 
-            <p>Libelle</p>
-            <input id="LibEq" name="LibEq"/>
-            <input id="Equation"  name="Equation"/>
+
+            Libellé : <input id="LibEq" name="LibEq"/>
+            Equation : <input id="Equation"  name="Equation"/>
+            +/- <input id="marge" name="marge"/>
           <input type="submit" value="Valider">
       </form>
 
@@ -204,6 +207,7 @@ hr {
             $var = strpos($formule->getEquation(), $libelle["libEq"]);
             if($var != null){
               $replace = str_replace($libelle["libEq"], $formuleManager->getEqByLib($libelle["libEq"])["equation"],$formule->getEquation());
+
             }
           }
 
@@ -220,7 +224,60 @@ hr {
         }
         ?>
       </table>
+      <table>
+       <tr>
+          <th>
+            'Arbre 1\yA' (mm)
+          </th><th>
+            'Arbre 1\yB' (mm)
+          </th><th>
+            'Arbre 1\yC' (mm)
+          </th><th>
+            'Arbre 1\yroue' (mm)
+          </th><th>
+            'Roue 2\angleD' (deg)
+          </th><th>
+            'anglepivotE' (deg)
+          </th><th>
+            'Arbre 1\angleH' (deg)
+          </th><th>
+            'Roue 2\angleI' (deg)
+          </th><th>
+            'Arbre 1\yJ' (mm)
+          </th>
+      </tr>
+      <td>
+        variable 1
+      </td>
+      <td>
+        variable 2
+      </td>
+      <td>
+        variable 3
+      </td>
+      <td>
+        variable 4
+      </td>
+      <td>
+        variable 5
+      </td>
+      <td>
+        variable 6
+      </td>
+      <td>
+        variable 7
+      </td>
+      <td>
+        variable 8
+      </td>
+      <td>
+        variable 9
+      </td>
 
+      <tr>
+
+      </tr>
+      </table>
       <?php
     }
 
@@ -238,8 +295,9 @@ $Equation = $formuleManager->getEq($_GET["ModifNum_eq"]);
       <form method="post" action="#">
 
           <p>Modification</p>
-          <input type="text" id="ModifLib" name="ModifLib" value="<?php echo $formuleManager->getLibEq($_GET["ModifNum_eq"])["libEq"] ?>"/>
-          <input type="text" id="ModifEq"  name="ModifEq" value="<?php echo $formuleManager->getEq($_GET["ModifNum_eq"])["equation"] ?>"/>
+          Libellé<input type="text" id="ModifLib" name="ModifLib" value="<?php echo $formuleManager->getLibEq($_GET["ModifNum_eq"])["libEq"] ?>"/>
+          Equation<input type="text" id="ModifEq"  name="ModifEq" value="<?php echo $formuleManager->getEq($_GET["ModifNum_eq"])["equation"] ?>"/>
+          +/- <input id="marge" name="marge" value="<?php echo $formuleManager->getMarge($_GET["ModifNum_eq"])["marge"] ?>"/>
         <input type="submit" value="Valider">
     </form>
       <?php
@@ -255,60 +313,7 @@ $Equation = $formuleManager->getEq($_GET["ModifNum_eq"]);
     }
 
      ?>
-     
-     <table>
-      <tr>
-         <th>
-           'Arbre 1\yA' (mm)
-         </th><th>
-           'Arbre 1\yB' (mm)
-         </th><th>
-           'Arbre 1\yC' (mm)
-         </th><th>
-           'Arbre 1\yroue' (mm)
-         </th><th>
-           'Roue 2\angleD' (deg)
-         </th><th>
-           'anglepivotE' (deg)
-         </th><th>
-           'Arbre 1\angleH' (deg)
-         </th><th>
-           'Roue 2\angleI' (deg)
-         </th><th>
-           'Arbre 1\yJ' (mm)
-         </th>
-     </tr>
-     <td>
-       variable 1
-     </td>
-     <td>
-       variable 2
-     </td>
-     <td>
-       variable 3
-     </td>
-     <td>
-       variable 4
-     </td>
-     <td>
-       variable 5
-     </td>
-     <td>
-       variable 6
-     </td>
-     <td>
-       variable 7
-     </td>
-     <td>
-       variable 8
-     </td>
-     <td>
-       variable 9
-     </td>
 
-     <tr>
 
-     </tr>
-     </table>
    </body>
 </html>
