@@ -1,8 +1,3 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -60,7 +55,7 @@ table
 
 /*//////////////////////////////////////////////////////////////////////////////*/
 
-/* page_eleve */
+/* page_eleve ---------------------------------------------------------------------------------------------page_eleve */
 
 body{
 	height: auto;
@@ -207,7 +202,7 @@ b {
 }*/
 
 
-/* connexion */
+/* connexion------------------------------------------------------------------------------------------------connexion */
 
 body {
 	font: 13px/20px "Lucida Grande", Tahoma, Verdana, sans-serif;
@@ -377,7 +372,7 @@ input[type=submit]:active {
 }
 
 
-/* page_prof */
+/* page_prof------------------------------------------------------------------------------------------------page_prof */
 
 body{
 	height: auto;
@@ -446,7 +441,7 @@ a{
 	text-decoration:none;
 }
 
-/* Page prof */
+/* Page prof------------------------------------------------------------------------------------------------Page prof */
 
 #liste_eleve table, thead, tbody, tfoot {
   table-layout: fixed;
@@ -459,7 +454,7 @@ a{
 	border: 1px solid black;
 }
 
-/* Page creation sujet */
+/* Page creation sujet ------------------------------------*/
 #creation_formule h1 {
 	padding-bottom: 10px;
 }
@@ -479,7 +474,7 @@ a{
 	border: 1px solid #53af57;
 }
 
-/* formules_deja_saisies */
+/* formules_deja_saisies ----------------------------------*/
 #formules_deja_saisies{
 	padding: 10px;
 }
@@ -538,7 +533,7 @@ border-radius:0 0 8px 8px;
 margin: 10px;
 }
 
-/* page creation de la correction */
+/* page creation de la correction -----------------------------------*/
 #saisie_reponses_et_marge_d_erreur{
 	padding-left: 20px;
 }
@@ -556,7 +551,7 @@ margin: 10px;
 	margin: 10px;
 }
 
-/* correction eleve */
+/* correction eleve ---------------------------------------------------*/
 #correction select{
 	font-size: 15px;
 	margin: 20px;
@@ -600,3 +595,83 @@ margin: 10px;
 #correction label[for=reponse], #correction input[type=text], #correction button[type=submit]{
 	margin: 5px;
 }
+
+/* header------------------------------------------------------------------------------------------------------header */
+nav.primary-navigation {
+	margin: 0 auto;
+	display: block;
+
+	padding: 120px 0 0 0;
+	text-align: center;
+	font-size: 16px;
+}
+
+nav ul li {
+	list-style: none;
+	margin: 0 auto;
+	border-left: 2px solid #3ca0e7;
+	display: inline-block;
+	padding: 0 30px;
+	position: relative;
+	text-decoration: none;
+	text-align: center;
+	font-family: arvo;
+}
+
+nav li a {
+	color: black;
+}
+
+nav li a:hover {
+	color: #3ca0e7;
+}
+
+nav li:hover {
+	cursor: pointer;
+}
+
+nav ul li ul {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	padding-left: 0;
+	left: 0;
+	display: none;
+	background: white;
+}
+
+nav ul li:hover > ul,
+nav ul li ul:hover {
+	visibility: visible;
+	opacity: 1;
+	display: block;
+	min-width: 250px;
+	text-align: left;
+	padding-top: 20px;
+	box-shadow: 0px 3px 5px -1px #ccc;
+}
+
+nav ul li ul li {
+	clear: both;
+	width: 100%;
+	text-align: left;
+	margin-bottom: 20px;
+	border-style: none;
+}
+
+nav ul li ul li a:hover {
+	padding-left: 10px;
+	border-left: 2px solid #3ca0e7;
+	transition: all 0.3s ease;
+}
+
+
+nav a {
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #3CA0E7;
+}
+
+nav ul li ul li a { transition: all 0.5s ease; }
