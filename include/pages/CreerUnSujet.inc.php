@@ -27,20 +27,22 @@ if (empty($_GET["id_sujet"])){ ?>
 		<?php }
 		?>
     </table>
-    <a href="index.php?page=3&id_sujet=<?php for ($i = 1 ; ; $i++) { if (!$sujetManager->existe($i)){ echo "$i";}}?>"></a>
+    <a href="index.php?page=3&id_sujet=<?php $i=1;
+	while ($i<100000 && $sujetManager->existe($i)) {
+		if (!$sujetManager->existe($i)){ echo $i;}
+		$i++;}?>">Créer un nouveau sujet</a>
 <?php }else{
-    if(!$sujetManager->existe($_GET["id_sujet"])){
+	if(!$sujetManager->existe($_GET["id_sujet"])){
 		$sujet = new Sujet($_POST);
 		$sujet->setTitre($_POST["titre"]);
 		$sujet->setSujetFile($_POST["sujet_file"]);
 		$sujetManager->add($sujet);
-    }
+	}
 	?>
     <form id="insert" method="post">
         <input name="titre" type="text" value="<?php
-		if (!empty($_POST["titre"])){
-			echo $_POST["titre"];
-		} ?>" />
+			echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
+		?>" />
         <!-- Create the editor container -->
         <div class="row form-group">
             <div id="editor-container"><?php
@@ -60,7 +62,7 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["titre"])){
 	$sujet = new Sujet($_POST);
 	$sujet->setTitre($_POST["titre"]);
 	$sujet->setSujetFile($_POST["sujet_file"]);
-	$sujetManager->add($sujet);
+	$sujetManager->save($sujet);
 }
 ?>
 </body>
