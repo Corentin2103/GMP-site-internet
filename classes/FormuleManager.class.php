@@ -26,17 +26,44 @@ class FormuleManager{
       $requete->closeCursor();
       return $listeFormule;
       }
+
+
       public function getEq($num_eq){
-        $listeFormule = array();
+
         $sql = 'select equation FROM formule where numEq="'.$num_eq.'"';
         $requete = $this->db->prepare($sql);
         $requete->execute();
-        while ($formule = $requete->fetch(PDO::FETCH_ASSOC)){
-        $listeFormule[] = $formule;
+
+      return $requete->fetch();
       }
-      print_r($listeFormule);
+
+
+      public function getLibEq($num_eq){
+        $sql = 'select libEq FROM formule where numEq="'.$num_eq.'"';
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+
+        return $requete->fetch();
+      }
+
+
+      public function suppEq($num_eq){
+        $sql = "DELETE FROM `formule` WHERE numEq =".$num_eq;
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+        $requete->closeCursor();
+
+      }
+      public function updateFormule($formule){
+      $sql ='UPDATE formule SET numEq=:numEq,libEq=:libEq,equation=:equation where numEq= :numEq ';
+      $requete = $this->db->prepare($sql);
+      $requete->bindValue(':numEq',$formule->getNumEq());
+      $requete->bindValue(':libEq',$formule->getLibEq());
+      $requete->bindValue(':equation',$formule->getEquation());
+
+      $retour = $requete->execute();
       $requete->closeCursor();
-      return $listeFormule;
-      }
+      return $retour;
+    }
 
 }

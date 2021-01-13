@@ -8,8 +8,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
   $formule = new Formule($_POST);
 
   $ajout = $formuleManager->add($formule);
-echo $_POST["LibEq"];
-echo $_POST["Equation"];
+
 }
 
  ?>
@@ -240,22 +239,7 @@ hr {
             <td><?php echo $formule->getNumEq() ?></td>
             <td><?php echo $formule->getLibEq() ?></td>
             <td><?php echo $formule->getEquation() ?></td>
-            <td>
-
-              <button onclick="document.getElementById('id01').style.display='block'">Supprimer</button>
-              <div id="id01" class="modal">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <form class="modal-content" action="">
-                  <div class="container">
-                    <h1>Suprimer l'équation :</h1>
-                    <div class="clearfix">
-                      <a href="index.php?page=2" ><button type="button" class="cancelbtn">Annuler</button></a>
-                      <a href="index.php?page=2&SuppNum_eq=<?php echo $formule->getNumEq() ?>" ><button type="button" class="deletebtn">Supprimer</button></a>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </td>
+            <td><a href="index.php?page=2&SuppNum_eq=<?php echo $formule->getNumEq() ?>"><button type="" class="">Supprimer</button></a></td>
             <td><a href="index.php?page=2&ModifNum_eq=<?php echo $formule->getNumEq() ?>"><button type="" class="">Modifier</button></a></td>
           </tr>
         <?php
@@ -267,11 +251,33 @@ hr {
     }
 
   if(!empty($_GET["SuppNum_eq"])){
-      echo "Bonsoir";
+      $formuleManager->suppEq($_GET["SuppNum_eq"]);
+      echo "Equation supprimée";
     }
 
-    if(!empty($_GET["ModifNum_eq"])){
-      echo "bonjour";
+    if(!empty($_GET["ModifNum_eq"]) && empty($_POST["ModifLib"])&& empty($_POST["ModifEq"])){
+$LibEq = $formuleManager->getLibEq($_GET["ModifNum_eq"]);
+$Equation = $formuleManager->getEq($_GET["ModifNum_eq"]);
+
+      ?>
+
+      <form method="post" action="#">
+
+          <p>Modification</p>
+          <input type="text" id="ModifLib" name="ModifLib" value="<?php echo $formuleManager->getLibEq($_GET["ModifNum_eq"])["libEq"] ?>"/>
+          <input type="text" id="ModifEq"  name="ModifEq" value="<?php echo $formuleManager->getEq($_GET["ModifNum_eq"])["equation"] ?>"/>
+        <input type="submit" value="Valider">
+    </form>
+      <?php
+
+    }
+    if(!empty($_POST["ModifLib"])&& !empty($_POST["ModifEq"])){
+      $nouvelleFormule = new Formule($_POST);
+      $nouvelleFormule->setNumEq($_GET["ModifNum_eq"]);
+      $nouvelleFormule->setLibEq($_POST["ModifLib"]);
+      $nouvelleFormule->setEquation($_POST["ModifEq"]);
+      $formuleManager->updateFormule($nouvelleFormule);
+      echo "Formulle modifiée";
     }
 
      ?>

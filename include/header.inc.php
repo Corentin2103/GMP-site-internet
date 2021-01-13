@@ -9,13 +9,7 @@ if(empty($_SESSION["estConnecte"])){
 
 <head>
 
-    <meta charset="utf-8">
-
-	<?php
-	$title = "Bienvenue sur le site de covoiturage de l'IUT.";?>
-    <title>
-		<?php echo $title ?>
-    </title>
+    <meta charset="utf-8"> 
 
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 </head>
