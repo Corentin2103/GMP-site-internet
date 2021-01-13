@@ -14,7 +14,14 @@
 $pdo = new Mypdo();
 $sujetManager = new sujetManager($pdo);
 $listeSujets = $sujetManager->getAllSujets();
-if (empty($_GET["id_sujet"])){ ?>
+if (empty($_GET["id_sujet"])){
+	if (!empty($_POST["nouv_titre"])){
+		$sujet = new Sujet($_POST);
+		$sujet->setTitre($_POST["nouv_titre"]);
+		$sujetManager->add($sujet);
+		$lastInsertId = $pdo->lastInsertId();
+		header('Location : include/pages/CreerUnSujet.inc.php&id_sujet='.$lastInsertId.'');
+	} ?>
     <h1>Veuillez choisir un sujet</h1>
     <table>
 		<?php
@@ -27,21 +34,14 @@ if (empty($_GET["id_sujet"])){ ?>
 		<?php }
 		?>
     </table>
-    <a href="index.php?page=3&id_sujet=<?php $i=1;
-	while ($i<100000 && $sujetManager->existe($i)) {
-		if (!$sujetManager->existe($i)){ echo $i;}
-		$i++;}?>">Créer un nouveau sujet</a>
-<?php }else{
-	if(!$sujetManager->existe($_GET["id_sujet"])){
-		$sujet = new Sujet($_POST);
-		$sujet->setTitre($_POST["titre"]);
-		$sujet->setSujetFile($_POST["sujet_file"]);
-		$sujetManager->add($sujet);
-	}
-	?>
+    <form action="#" method="post">
+        <input type="text" name="nouv_titre">
+        <input type="submit" value="Créer">
+    </form>
+<?php }else{ ?>
     <form id="insert" method="post">
         <input name="titre" type="text" value="<?php
-			echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
+		echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
 		?>" />
         <!-- Create the editor container -->
         <div class="row form-group">
