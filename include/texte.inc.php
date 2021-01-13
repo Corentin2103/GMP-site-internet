@@ -24,7 +24,18 @@
 			// inclure ici la page insertion nouvelle personne
 			include("pages/CreerUnSujet.inc.php");
 			break;
+			
+		case 4:
+			include("pages/connexion.inc.php");
+			break;
 
+		case 5:
+			include("pages/page_eleve.inc.php");
+			break;
+
+		case 6:
+			include("pages/page_prof.inc.php");
+			break;
 
 
 		default : 	include_once('header.inc.php');

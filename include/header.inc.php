@@ -9,7 +9,7 @@ if(empty($_SESSION["estConnecte"])){
 
 <head>
 
-    <meta charset="utf-8"> 
+    <meta charset="utf-8">
 
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css" />
 </head>
@@ -27,5 +27,13 @@ if(empty($_SESSION["estConnecte"])){
     <div id="connect">
         <a href="index.php?page=3">Créer un sujet</a>
     </div>
-
+		<div id="connect">
+        <a href="index.php?page=4">Connexion</a>
+    </div>
+		<div id="connect">
+        <a href="index.php?page=5">page_eleve</a>
+    </div>
+		<div id="connect">
+        <a href="index.php?page=6">page_prof</a>
+    </div>
 </div>
