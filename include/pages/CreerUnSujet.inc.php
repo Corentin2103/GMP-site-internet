@@ -10,32 +10,56 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
-<form id="insert" method="post">
-    <input name="titre" type="text" value="<?php
-	if (!empty($_POST["titre"])){
-		echo $_POST["titre"];
-	} ?>" />
-    <!-- Create the editor container -->
-    <div class="row form-group">
-        <div id="editor-container"><?php
-			if (!empty($_POST["old_text"])){
-				echo $_POST["old_text"];
-			}
-			?></div>
-    </div>
-    <div class="row">
-        <button onclick="transforme()">Sauvegarder</button>
-    </div>
-    <input name="sujet_file" type="hidden"/>
-    <input name="old_text" type="hidden"/>
-</form>
 <?php
+$pdo = new Mypdo();
+$sujetManager = new sujetManager($pdo);
+$listeSujets = $sujetManager->getAllSujets();
+if (empty($_GET["id_sujet"])){ ?>
+    <h1>Veuillez choisir un sujet</h1>
+    <table>
+		<?php
+		foreach ($listeSujets as $sujet){
+			?>
+            <tr>
+                <td><?php echo $sujet->getTitre(); ?></td>
+                <td><a href="index.php?page=3&id_sujet=<?php echo $sujet->getIdSujet(); ?>" id="btn-choix">Choisir</a></td>
+            </tr>
+		<?php }
+		?>
+    </table>
+    <a href="index.php?page=3&id_sujet=<?php for ($i = 1 ; ; $i++) { if (!$sujetManager->existe($i)){ echo "$i";}}?>"></a>
+<?php }else{
+    if(!$sujetManager->existe($_GET["id_sujet"])){
+		$sujet = new Sujet($_POST);
+		$sujet->setTitre($_POST["titre"]);
+		$sujet->setSujetFile($_POST["sujet_file"]);
+		$sujetManager->add($sujet);
+    }
+	?>
+    <form id="insert" method="post">
+        <input name="titre" type="text" value="<?php
+		if (!empty($_POST["titre"])){
+			echo $_POST["titre"];
+		} ?>" />
+        <!-- Create the editor container -->
+        <div class="row form-group">
+            <div id="editor-container"><?php
+				if (!empty($_POST["old_text"])){
+					echo $_POST["old_text"];
+				}
+				?></div>
+        </div>
+        <div class="row">
+            <button onclick="transforme()">Sauvegarder</button>
+        </div>
+        <input name="sujet_file" type="hidden"/>
+        <input name="old_text" type="hidden"/>
+    </form>
+<?php }
 if (!empty($_POST["sujet_file"]) && !empty($_POST["titre"])){
-	$pdo = new Mypdo();
-	$sujetManager = new sujetManager($pdo);
 	$sujet = new Sujet($_POST);
 	$sujet->setTitre($_POST["titre"]);
-	$sujet->setSujet_File($_POST["sujet_file"]);
+	$sujet->setSujetFile($_POST["sujet_file"]);
 	$sujetManager->add($sujet);
 }
 ?>
