@@ -17,7 +17,45 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
 
      <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
       <script>
+                // Get the modal
+          var modal = document.getElementById('id01');
 
+          // When the user clicks anywhere outside of the modal, close it
+          window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          }
+         //fonction qui évalue le chiffre et renvoie la sortie
+         function calculer()
+         {
+             let a = document.getElementById("output").value
+             let b = eval(a)
+             document.getElementById("output").value = b
+         }
+         //fonction qui affiche la valeur
+         function afficher(val)
+         {
+             document.getElementById("output").value+=val
+         }
+         //fonction qui efface l'écran
+         function effacer()
+         {
+             document.getElementById("output").value = ""
+         }
+         function Rentrer(){
+            let Equation = document.getElementById("output").value
+            document.getElementById("Dispawn").style.display = "none";
+            document.getElementById("main").style.display = "block";
+            document.getElementById('Equation').value = Equation;
+
+
+         }
+         function modifier(){
+
+          afficher()
+
+         }
       </script>
       <style>
         td button{width:100%}
@@ -152,7 +190,7 @@ hr {
             <td><button onclick="afficher('-')">-</button></td>
          </tr>
          <tr>
-           <td><button onclick="afficher('abs()')">| |</button></td>
+           <td><button onclick="afficher('|x|')">| |</button></td>
            <td><button onclick="afficher('sin()')">sin()</button></td>
             <td><button onclick="afficher('7')">7</button></td>
             <td><button onclick="afficher('8')">8</button></td>
@@ -181,6 +219,9 @@ hr {
       <table>
         <tr>
           <th>
+            Numéro équation
+          </th>
+          <th>
             Libellé équation
           </th>
           <th>
@@ -206,7 +247,7 @@ hr {
 
           ?>
           <tr>
-
+            <td><?php echo $formule->getNumEq() ?></td>
             <td><?php echo $formule->getLibEq() ?></td>
             <td><?php echo $formule->getEquation() ?></td>
             <td><?php echo $replace ?></td>
@@ -252,6 +293,7 @@ $Equation = $formuleManager->getEq($_GET["ModifNum_eq"]);
     }
 
      ?>
+     
      <table>
       <tr>
          <th>
@@ -301,6 +343,7 @@ $Equation = $formuleManager->getEq($_GET["ModifNum_eq"]);
      <td>
        variable 9
      </td>
+
      <tr>
 
      </tr>
