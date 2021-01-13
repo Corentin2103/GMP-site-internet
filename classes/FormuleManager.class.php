@@ -66,4 +66,24 @@ class FormuleManager{
       return $retour;
     }
 
+    public function getAllLib(){
+      $listeLib = array();
+      $sql = 'select distinct libEq FROM formule';
+      $requete = $this->db->prepare($sql);
+      $requete->execute();
+      while ($libelle = $requete->fetch(PDO::FETCH_ASSOC)){
+      $listeLib[] = $libelle;
+    }
+    $requete->closeCursor();
+    return $listeLib;
+    }
+
+    public function getEqByLib($libEq){
+
+      $sql = 'select equation FROM formule where libEq="'.$libEq.'"';
+      $requete = $this->db->prepare($sql);
+      $requete->execute();
+
+    return $requete->fetch();
+    }
 }

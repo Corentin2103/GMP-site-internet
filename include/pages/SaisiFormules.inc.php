@@ -227,18 +227,30 @@ hr {
           <th>
             équation
           </th>
+          <th>
+            équation avec remplacement
+          </th>
         </tr>
         <?php
 
         $listeFormule = $formuleManager->getAllForm();
-
+        $listeLib = $formuleManager->getAllLib();
         foreach($listeFormule as $formule){
-          $equation = $formule->getEquation();
+            $replace = $formule->getEquation();
+          foreach($listeLib as $libelle){
+
+            $var = strpos($formule->getEquation(), $libelle["libEq"]);
+            if($var != null){
+              $replace = str_replace($libelle["libEq"], $formuleManager->getEqByLib($libelle["libEq"])["equation"],$formule->getEquation());
+            }
+          }
+
           ?>
           <tr>
             <td><?php echo $formule->getNumEq() ?></td>
             <td><?php echo $formule->getLibEq() ?></td>
             <td><?php echo $formule->getEquation() ?></td>
+            <td><?php echo $replace ?></td>
             <td><a href="index.php?page=2&SuppNum_eq=<?php echo $formule->getNumEq() ?>"><button type="" class="">Supprimer</button></a></td>
             <td><a href="index.php?page=2&ModifNum_eq=<?php echo $formule->getNumEq() ?>"><button type="" class="">Modifier</button></a></td>
           </tr>
