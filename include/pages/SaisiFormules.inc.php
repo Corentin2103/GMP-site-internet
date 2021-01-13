@@ -17,7 +17,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
 
      <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
       <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
       </script>
       <style>
         td button{width:100%}
@@ -152,7 +152,7 @@ hr {
             <td><button onclick="afficher('-')">-</button></td>
          </tr>
          <tr>
-           <td><button onclick="afficher('|x|')">| |</button></td>
+           <td><button onclick="afficher('abs()')">| |</button></td>
            <td><button onclick="afficher('sin()')">sin()</button></td>
             <td><button onclick="afficher('7')">7</button></td>
             <td><button onclick="afficher('8')">8</button></td>
@@ -181,9 +181,6 @@ hr {
       <table>
         <tr>
           <th>
-            Numéro équation
-          </th>
-          <th>
             Libellé équation
           </th>
           <th>
@@ -209,7 +206,7 @@ hr {
 
           ?>
           <tr>
-            <td><?php echo $formule->getNumEq() ?></td>
+
             <td><?php echo $formule->getLibEq() ?></td>
             <td><?php echo $formule->getEquation() ?></td>
             <td><?php echo $replace ?></td>
@@ -255,5 +252,58 @@ $Equation = $formuleManager->getEq($_GET["ModifNum_eq"]);
     }
 
      ?>
+     <table>
+      <tr>
+         <th>
+           'Arbre 1\yA' (mm)
+         </th><th>
+           'Arbre 1\yB' (mm)
+         </th><th>
+           'Arbre 1\yC' (mm)
+         </th><th>
+           'Arbre 1\yroue' (mm)
+         </th><th>
+           'Roue 2\angleD' (deg)
+         </th><th>
+           'anglepivotE' (deg)
+         </th><th>
+           'Arbre 1\angleH' (deg)
+         </th><th>
+           'Roue 2\angleI' (deg)
+         </th><th>
+           'Arbre 1\yJ' (mm)
+         </th>
+     </tr>
+     <td>
+       variable 1
+     </td>
+     <td>
+       variable 2
+     </td>
+     <td>
+       variable 3
+     </td>
+     <td>
+       variable 4
+     </td>
+     <td>
+       variable 5
+     </td>
+     <td>
+       variable 6
+     </td>
+     <td>
+       variable 7
+     </td>
+     <td>
+       variable 8
+     </td>
+     <td>
+       variable 9
+     </td>
+     <tr>
+
+     </tr>
+     </table>
    </body>
 </html>
