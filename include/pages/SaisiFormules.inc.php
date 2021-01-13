@@ -17,45 +17,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"])){
 
      <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
       <script>
-                // Get the modal
-          var modal = document.getElementById('id01');
-
-          // When the user clicks anywhere outside of the modal, close it
-          window.onclick = function(event) {
-            if (event.target == modal) {
-              modal.style.display = "none";
-            }
-          }
-         //fonction qui évalue le chiffre et renvoie la sortie
-         function calculer()
-         {
-             let a = document.getElementById("output").value
-             let b = eval(a)
-             document.getElementById("output").value = b
-         }
-         //fonction qui affiche la valeur
-         function afficher(val)
-         {
-             document.getElementById("output").value+=val
-         }
-         //fonction qui efface l'écran
-         function effacer()
-         {
-             document.getElementById("output").value = ""
-         }
-         function Rentrer(){
-            let Equation = document.getElementById("output").value
-            document.getElementById("Dispawn").style.display = "none";
-            document.getElementById("main").style.display = "block";
-            document.getElementById('Equation').value = Equation;
-
-
-         }
-         function modifier(){
-
-          afficher()
-
-         }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
       </script>
       <style>
         td button{width:100%}
