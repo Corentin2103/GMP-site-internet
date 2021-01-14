@@ -19,8 +19,8 @@ if (empty($_GET["id_sujet"])){
 		$sujet = new Sujet($_POST);
 		$sujet->setTitre($_POST["nouv_titre"]);
 		$sujetManager->add($sujet);
-		$lastInsertId = $pdo->lastInsertId();
-		header('Location : include/pages/CreerUnSujet.inc.php&id_sujet='.$lastInsertId.'');
+		echo "test";
+		header("Location : index.php");
 	} ?>
     <h1>Veuillez choisir un sujet</h1>
     <table>
@@ -45,23 +45,20 @@ if (empty($_GET["id_sujet"])){
 		?>" />
         <!-- Create the editor container -->
         <div class="row form-group">
-            <div id="editor-container"><?php
-				if (!empty($_POST["old_text"])){
-					echo $_POST["old_text"];
-				}
-				?></div>
+            <div id="editor-container"></div>
         </div>
         <div class="row">
             <button onclick="transforme()">Sauvegarder</button>
         </div>
         <input name="sujet_file" type="hidden"/>
-        <input name="old_text" type="hidden"/>
     </form>
 <?php }
 if (!empty($_POST["sujet_file"]) && !empty($_POST["titre"])){
 	$sujet = new Sujet($_POST);
 	$sujet->setTitre($_POST["titre"]);
 	$sujet->setSujetFile($_POST["sujet_file"]);
+	$sujet->setIdSujet($_GET["id_sujet"]);
+	print_r($sujet);
 	$sujetManager->save($sujet);
 }
 ?>
@@ -69,10 +66,8 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["titre"])){
 <script>
     function transforme(){
         var sujet_file = document.querySelector('input[name=sujet_file]');
-        var old_text = document.querySelector('input[name=old_text]');
 
         sujet_file.value = JSON.stringify(quill.getContents());
-        old_text.value=quill.getText(0, quill.getLength());
 
         return false;
     }
