@@ -67,4 +67,16 @@ class sujetManager{
 
 		$requete->closeCursor();
 	}
+
+	public function titreDejaPresent($titre){
+		$sql = "select * FROM sujet where titre='$titre'";
+
+		$requete = $this->db->prepare($sql);
+		$requete->execute();
+
+		while ($sujet = $requete->fetch(PDO::FETCH_ASSOC))
+			return $sujet;
+
+		$requete->closeCursor();
+	}
 }

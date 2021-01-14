@@ -16,11 +16,16 @@ $sujetManager = new sujetManager($pdo);
 $listeSujets = $sujetManager->getAllSujets();
 if (empty($_GET["id_sujet"])){
 	if (!empty($_POST["nouv_titre"])){
-		$sujet = new Sujet($_POST);
-		$sujet->setTitre($_POST["nouv_titre"]);
-		$sujetManager->add($sujet);
-		echo "test";
-		header("Location : index.php");
+		if ($sujetManager->titreDejaPresent($_POST["nouv_titre"])){
+			$erreurTitre = true;
+		}else {
+			$erreurTitre = false;
+			$sujet = new Sujet($_POST);
+			$sujet->setTitre($_POST["nouv_titre"]);
+			$sujetManager->add($sujet);
+			$lastInsertId = $pdo->lastInsertId();
+			header("Location : index.php?page=3");
+		}
 	} ?>
     <h1>Veuillez choisir un sujet</h1>
     <table>
@@ -34,6 +39,11 @@ if (empty($_GET["id_sujet"])){
 		<?php }
 		?>
     </table>
+	<?php if (isset($erreurTitre) && $erreurTitre){ ?>
+        <div id="erreurTitre">
+        <label>Le titre <?php echo $_POST["nouv_titre"]; ?> existe dejà. </label>
+	<?php } ?>
+    </div>
     <form action="#" method="post">
         <input type="text" name="nouv_titre">
         <input type="submit" value="Créer">
@@ -58,7 +68,6 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["titre"])){
 	$sujet->setTitre($_POST["titre"]);
 	$sujet->setSujetFile($_POST["sujet_file"]);
 	$sujet->setIdSujet($_GET["id_sujet"]);
-	print_r($sujet);
 	$sujetManager->save($sujet);
 }
 ?>
