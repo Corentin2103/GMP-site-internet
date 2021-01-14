@@ -1,8 +1,11 @@
 <?php session_start();
-
 if(empty($_SESSION["estConnecte"])){
-	$_SESSION["estConnecte"]= false;
-} ?>
+$_SESSION["estConnecte"] = false;
+}
+if($_SESSION["estConnecte"]){
+  require_once("classes/Etudiant.class.php");
+  require_once("classes/EtudiantManager.class.php");
+ ?>
 
 <!doctype html>
 <html lang="fr">
@@ -11,9 +14,13 @@ if(empty($_SESSION["estConnecte"])){
     <link rel="stylesheet" type="text/css" href="css/style_css.css" />
 </head>
 
-<?php $pdo = new Mypdo();
-$personneManager = new PersonneManager($pdo);
-if ($personneManager->estEtudiant($personneManager->getIdPersonne($_SESSION["mail"], $_SESSION["mot_de_passe"])["id_personne"])) { ?>
+<?php
+$pdo = new Mypdo();
+$etudiantManager = new EtudiantManager($pdo);
+$professeurManager = new ProfesseurManager($pdo);
+if($etudiantManager->estPresent($_SESSION["per_num"])){
+ ?>
+
 <!-- menu élève -->
     <body>
         <nav role="navigation" class="primary-navigation">
@@ -30,7 +37,9 @@ if ($personneManager->estEtudiant($personneManager->getIdPersonne($_SESSION["mai
         </nav>
     </body>
 
-<?php } if ($personneManager->estProfesseur($personneManager->getIdPersonne($_SESSION["mail"], $_SESSION["mot_de_passe"])["id_personne"])) { ?>
+<?php
+}
+if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
 <!-- menu professeur -->
     <body>
         <nav role="navigation" class="primary-navigation">
@@ -53,7 +62,8 @@ if ($personneManager->estEtudiant($personneManager->getIdPersonne($_SESSION["mai
         </nav>
     </body>
 
-<?php } else { ?>
+<?php
+}  ?>
 	<body>
 		<div id="header">
 		    <div id="entete">
@@ -78,4 +88,5 @@ if ($personneManager->estEtudiant($personneManager->getIdPersonne($_SESSION["mai
 		        <a href="index.php?page=6">page_prof</a>
 		    </div>
 		</div>
-<?php } ?>
+<?php }
+ ?>

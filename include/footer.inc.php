@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION["id"] != null){ ?>
+if ($_SESSION["estConnecte"]){ ?>
   <footer>
       <div class="copyright">
           <p>&copy 2020 - Five Guys Dev</p>
@@ -8,7 +8,7 @@ if ($_SESSION["id"] != null){ ?>
           <!-- renvoi à la page acceuil-->
           <a href="#" class="home">Accueil</a>
           <!-- idem bouton déconnexion-->
-          <a href="#" class="deco">Déconnexion</a>
+          <a href="index.php?page=7" class="deco">Déconnexion</a>
           <!-- page récap de nous-->
           <a href="#" class="contact">A propose de nous</a>
           <!-- remplissage de la largeur-->

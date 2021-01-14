@@ -1,8 +1,8 @@
 <?php
 class Personne{
-	private $id;
-	private $email;
-	private $mot_de_passe;
+	private $per_num;
+	private $per_mail;
+	private $per_mdp;
 
 	public function __construct($valeurs = array()){
 		if (!empty ($valeurs)){
@@ -13,31 +13,31 @@ class Personne{
 	public function affecte($donnees){
 		foreach ($donnees as $attribut => $value) {
 			switch ($attribut) {
-				case 'id': $this->setPersonneId($value);break;
-				case 'email': $this->setPersonneEmail($value);break;
-				case 'mot_de_passe': $this->setPersonneMotDePasse($value);break;
+				case 'per_num': $this->setPersonneId($value);break;
+				case 'per_mail': $this->setPersonneEmail($value);break;
+				case 'per_mdp': $this->setPersonneMotDePasse($value);break;
 			}
 		}
 	}
 
 	public function getPersonneId(){
-			return $this->id;
+			return $this->per_num;
 	}
-	public function setPersonneId($id){
-			$this->id = $id;
+	public function setPersonneId($value){
+			$this->per_num = $value;
 	}
 
 	public function getPersonneEmail(){
-			return $this->email;
+			return $this->per_mail;
 	}
-	public function setPersonneEmail($email){
-			$this->email = $email;
+	public function setPersonneEmail($value){
+			$this->per_mail = $value;
 	}
 
 	public function getPersonneMotDePasse(){
-			return $this->mot_de_passe;
+			return $this->per_mdp;
 	}
-	public function setPersonneMotDePasse($mot_de_passe){
-			$this->mot_de_passe = $mot_de_passe;
+	public function setPersonneMotDePasse($value){
+			$this->per_mdp = $value;
 	}
 }

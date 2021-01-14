@@ -1,52 +1,53 @@
 <?php
-class Personne{
-  private $id
-	private $etu_nom;
-	private $etu_prenom;
-	private $annee;
+class Etudiant{
 
-	public function __construct($valeurs = array()){
-		if (!empty ($valeurs)){
-			$this->affecte($valeurs);
-		}
-	}
+  private $per_num;
+  private $dep_num;
+  private $div_num;
 
-	public function affecte($donnees){
-		foreach ($donnees as $attribut => $value) {
-			switch ($attribut) {
-				case 'id': $this->setEtudiantId($value);break;
-				case 'etu_nom': $this->setEtudiantNom($value);break;
-				case 'etu_prenom': $this->setEtudiantPrenom($value);break;
-        case 'annee': $this->setEtudiantAnnee($value);break;
-			}
-		}
-	}
+  public function __construct($etudiant){
+    if (!empty($etudiant))
+    $this->affecte($etudiant);
 
-	public function getEtudiantId(){
-			return $this->id;
-	}
-	public function setEtudiantId($id){
-			$this->id = $id;
-	}
+  }
+  public function affecte($donnees){
+    foreach ($donnees as $attribut => $valeur){
+      switch ($attribut){
+        case 'per_num': $this->setPersNum($valeur); break;
+        case 'etu_nom': $this->setEtuNom($valeur); break;
+        case 'etu_prenom': $this->setEtuPrenom($valeur); break;
+        case 'etu_annee': $this->setEtuAnnee($valeur); break;
 
-  public function getEtudiantNom(){
-			return $this->etu_nom;
-	}
-	public function setEtudiantNom($etu_nom){
-			$this->etu_nom = $etu_nom;
-	}
+      }
+    }
+  }
 
-  public function getEtudiantPrenom(){
-			return $this->etu_prenom;
-	}
-	public function setEtudiantPrenom($etu_prenom){
-			$this->etu_prenom = $etu_prenom;
-	}
-
-  public function getEtudiantAnnee(){
-			return $this->annee;
-	}
-	public function setEtudiantAnnee($annee){
-			$this->annee = $annee;
-	}
+  /*NUMERO*/
+  public function getPersNum() {
+    return $this->per_num;
+  }
+  public function setPersNum($valeur){
+    $this->per_num=$valeur;
+  }
+  /*Numero du departement*/
+  public function getEtuNom() {
+    return $this->etu_nom;
+  }
+  public function setEtuNom($valeur){
+    $this->etu_nom=$valeur;
+  }
+  /*Numero division*/
+  public function getEtuPrenom() {
+    return $this->etu_prenom;
+  }
+  public function setEtuPrenom($valeur){
+    $this->etu_prenom=$valeur;
+  }
+  public function getEtuAnnee() {
+    return $this->etu_annee;
+  }
+  public function setEtuAnnee($valeur){
+    $this->etu_annee=$valeur;
+  }
 }
+?>
