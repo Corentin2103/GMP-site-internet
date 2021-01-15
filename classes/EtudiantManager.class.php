@@ -1,6 +1,6 @@
 <?php
 class EtudiantManager{
-  private $dbo;
+  private $db;
 
 		public function __construct($db){
 			$this->db = $db;
@@ -16,7 +16,7 @@ class EtudiantManager{
           $retour=$requete->execute();
           return $retour;
       }
-      
+
     public function getAllEtu(){
             $listeEtu = array();
 

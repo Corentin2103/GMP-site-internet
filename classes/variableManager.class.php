@@ -1,6 +1,6 @@
 <?php
 class VariableManager{
-  private $dbo;
+  private $db;
 
 		public function __construct($db){
 			$this->db = $db;
@@ -22,6 +22,6 @@ class VariableManager{
           return $retour;
       }
 
-      
+
 
 }
