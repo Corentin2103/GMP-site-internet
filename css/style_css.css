@@ -675,3 +675,32 @@ nav a:hover {
 }
 
 nav ul li ul li a { transition: all 0.5s ease; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* informations ---------------------------------------------------------------------------------------- informations */
+
+.logo {
+	margin: auto;
+}
+
+.bloc {
+	text-align: center;
+	text-content: justify;
+}
