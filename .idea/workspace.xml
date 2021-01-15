@@ -20,8 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a28171e7-7b71-4342-b275-f6fd39f6b3b9" name="Default Changelist" comment="Ajout transformation texte écrit dans quillJs en html">
+      <change afterPath="$PROJECT_DIR$/include/pages/informations.inc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/PersonneManager.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/PersonneManager.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/header.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/header.inc.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -66,6 +69,19 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\GMP-site-internet\include\pages" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -84,6 +100,8 @@
       <workItem from="1609860761541" duration="19538000" />
       <workItem from="1610350312148" duration="22000" />
       <workItem from="1610350435874" duration="16335000" />
+      <workItem from="1610622657955" duration="3104000" />
+      <workItem from="1610696353341" duration="960000" />
     </task>
     <task id="LOCAL-00001" summary="CreerUnSujet : texte en gras, italic et souligné">
       <created>1608218219535</created>

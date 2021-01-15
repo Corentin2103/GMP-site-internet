@@ -18,10 +18,10 @@ if ($personneManager->estEtudiant($personneManager->getIdPersonne($_SESSION["mai
     <body>
         <nav role="navigation" class="primary-navigation">
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="pages/page_eleve.inc.php">Accueil</a></li>
                 <li><a href="#">Questions &dtrif;</a>
                     <ul class="dropdown">
-                        <li><a href="#">Question 1</a></li>
+                        <li><a href="#">Question 1</a></li> <!-- ajout d'ancres -->
                         <li><a href="#">Question 2</a></li>
                     </ul>
                 </li>
@@ -35,16 +35,16 @@ if ($personneManager->estEtudiant($personneManager->getIdPersonne($_SESSION["mai
     <body>
         <nav role="navigation" class="primary-navigation">
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="pages/page_prof.inc.php">Accueil</a></li>
                 <li><a href="#">Formules &dtrif;</a>
                     <ul class="dropdown">
-                        <li><a href="#">Créer une formule</a></li>
+                        <li><a href="pages/SaisiFormules.inc.php">Créer une formule</a></li>
                         <li><a href="#">Voir les formules</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Sujets &dtrif;</a>
                     <ul class="dropdown">
-                        <li><a href="#">Créer un sujet</a></li>
+                        <li><a href="pages/CreerUnSujet.inc.php">Créer un sujet</a></li>
                         <li><a href="#">Importer des images</a></li>
                     </ul>
                 </li>
@@ -54,10 +54,10 @@ if ($personneManager->estEtudiant($personneManager->getIdPersonne($_SESSION["mai
     </body>
 
 <?php } else { ?>
+<!-- menu temporaire -->
 	<body>
 		<div id="header">
 		    <div id="entete">
-
 		    </div>
 		    <div id="connect">
 		        <a href="index.php?page=1">inserer Tableau excel</a>

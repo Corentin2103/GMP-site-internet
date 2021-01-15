@@ -1,0 +1,1 @@
+<?php //page relative au groupe et au contexte du projet ?>
