@@ -73,6 +73,8 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["titre"])){
 ?>
 </body>
 <script>
+    var QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
+
     function transforme(){
         var sujet_file = document.querySelector('input[name=sujet_file]');
 

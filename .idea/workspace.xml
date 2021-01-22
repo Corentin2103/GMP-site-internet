@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a28171e7-7b71-4342-b275-f6fd39f6b3b9" name="Default Changelist" comment="Ajout transformation texte écrit dans quillJs en html">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/sujetManager.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/sujetManager.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" afterDir="false" />
-    </list>
+    <list default="true" id="a28171e7-7b71-4342-b275-f6fd39f6b3b9" name="Default Changelist" comment="Ajout transformation texte écrit dans quillJs en html" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,6 +57,8 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -85,6 +83,7 @@
       <workItem from="1609860761541" duration="19538000" />
       <workItem from="1610350312148" duration="22000" />
       <workItem from="1610350435874" duration="16335000" />
+      <workItem from="1611322728415" duration="826000" />
     </task>
     <task id="LOCAL-00001" summary="CreerUnSujet : texte en gras, italic et souligné">
       <created>1608218219535</created>

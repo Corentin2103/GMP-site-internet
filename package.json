@@ -1,0 +1,7 @@
+{
+  "name": "GMP-site-internet",
+  "version": "1.0.0",
+  "dependencies": {
+    "quill-delta-to-html": "^0.12.0"
+  }
+}
