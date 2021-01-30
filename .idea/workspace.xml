@@ -19,7 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a28171e7-7b71-4342-b275-f6fd39f6b3b9" name="Default Changelist" comment="Ajout transformation texte écrit dans quillJs en html" />
+    <list default="true" id="a28171e7-7b71-4342-b275-f6fd39f6b3b9" name="Default Changelist" comment="Ajout transformation texte écrit dans quillJs en html">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/CreerUnSujet.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/classes/CreerUnSujet.class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Sujet.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Sujet.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/sujetManager.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/sujetManager.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style_css.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lodash.isequal/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/lodash.isequal/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/quill-delta-to-html/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/quill-delta-to-html/package.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,6 +42,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
@@ -50,6 +60,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.15.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.22" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -83,7 +95,9 @@
       <workItem from="1609860761541" duration="19538000" />
       <workItem from="1610350312148" duration="22000" />
       <workItem from="1610350435874" duration="16335000" />
-      <workItem from="1611322728415" duration="826000" />
+      <workItem from="1611322728415" duration="1326000" />
+      <workItem from="1611827551794" duration="8572000" />
+      <workItem from="1612004120263" duration="6541000" />
     </task>
     <task id="LOCAL-00001" summary="CreerUnSujet : texte en gras, italic et souligné">
       <created>1608218219535</created>

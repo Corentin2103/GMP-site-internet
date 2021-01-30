@@ -9,9 +9,10 @@ class sujetManager{
 	}
 
 	public function add($sujet){
-		$requete = $this->db->prepare('INSERT INTO SUJET(id_sujet,titre,sujet_file) VALUES(:id_sujet,:titre,:sujet_file)');
+		$requete = $this->db->prepare('INSERT INTO SUJET(id_sujet,titre,sujet_file,sujet_file_html) VALUES(:id_sujet,:titre,:sujet_file,:sujet_file_html)');
 
 	$requete->bindValue(':sujet_file',$sujet->getSujetFile());
+	$requete->bindValue(':sujet_file_html',$sujet->getSujetFileHTML());
 	$requete->bindValue(':titre',$sujet->getTitre());
 	$requete->bindValue(':id_sujet',$sujet->getIdSujet());
 
@@ -46,11 +47,12 @@ class sujetManager{
 	}
 
 	public function save($sujet){
-		$requete = $this->db->prepare('update SUJET set titre =:titre,sujet_file=:sujet_file where id_sujet=:id_sujet');
+		$requete = $this->db->prepare('update SUJET set titre=:titre,sujet_file=:sujet_file,sujet_file_html=:sujet_file_html where id_sujet=:id_sujet');
 
 		$requete->bindValue(':sujet_file',$sujet->getSujetFile());
 		$requete->bindValue(':titre',$sujet->getTitre());
 		$requete->bindValue(':id_sujet',$sujet->getIdSujet());
+        $requete->bindValue(':sujet_file_html',$sujet->getSujetFileHTML());
 
 		return $requete->execute();
 	}

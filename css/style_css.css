@@ -673,3 +673,7 @@ nav a:hover {
 }
 
 nav ul li ul li a { transition: all 0.5s ease; }
+
+#insert {
+	background-color: #fff;
+}
