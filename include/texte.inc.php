@@ -4,13 +4,17 @@
 		$page=$_GET["page"];}
 	else
 	{
-		$page=1;
+		$page=0;
+
 	}
 	switch ($page) {
 //
 // Personnes
 //
-
+case 0:
+	// inclure ici la page accueil photo
+	include_once('pages/connexion.inc.php');
+	break;
 		case 1:
 			// inclure ici la page accueil photo
 			include_once('pages/insererTabExcel.inc.php');
@@ -24,7 +28,7 @@
 			// inclure ici la page insertion nouvelle personne
 			include("pages/CreerUnSujet.inc.php");
 			break;
-			
+
 		case 4:
 			include("pages/connexion.inc.php");
 			break;
@@ -36,9 +40,12 @@
 		case 6:
 			include("pages/page_prof.inc.php");
 			break;
+			case 7:
+				include("pages/deconnexion.inc.php");
+				break;
 
 
-		default : 	include_once('header.inc.php');
+		default : 	include_once('connexion.inc.php');
 	}
 
 	?>

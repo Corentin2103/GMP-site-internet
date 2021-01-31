@@ -14,26 +14,37 @@
 $pdo = new Mypdo();
 $sujetManager = new sujetManager($pdo);
 $listeSujets = $sujetManager->getAllSujets();
-if (empty($_GET["id_sujet"])){
-	if (!empty($_POST["nouv_titre"])){
-		$sujet = new Sujet($_POST);
-		$sujet->setTitre($_POST["nouv_titre"]);
-		$sujetManager->add($sujet);
-		echo "test";
-		header("Location : index.php");
-	} ?>
+if (empty($_GET["id_sujet"])){ //Choix du sujet
+    if (!empty($_POST["nouv_titre"])){
+        if ($sujetManager->titreDejaPresent($_POST["nouv_titre"])){
+            $erreurTitre = true;
+        }else {
+            $erreurTitre = false;
+            $sujet = new Sujet($_POST);
+            $sujet->setTitre($_POST["nouv_titre"]);
+            $sujetManager->add($sujet);
+            $lastInsertId = $pdo->lastInsertId();
+            echo $lastInsertId;
+            header("Location : index.php?page=3");
+        }
+    } ?>
     <h1>Veuillez choisir un sujet</h1>
     <table>
-		<?php
-		foreach ($listeSujets as $sujet){
-			?>
+        <?php
+        foreach ($listeSujets as $sujet){
+            ?>
             <tr>
                 <td><?php echo $sujet->getTitre(); ?></td>
                 <td><a href="index.php?page=3&id_sujet=<?php echo $sujet->getIdSujet(); ?>" id="btn-choix">Choisir</a></td>
             </tr>
-		<?php }
-		?>
+        <?php }
+        ?>
     </table>
+    <?php if (isset($erreurTitre) && $erreurTitre){ ?>
+        <div id="erreurTitre">
+        <label>Le titre <?php echo $_POST["nouv_titre"]; ?> existe dejà.</label>
+    <?php } ?>
+    </div>
     <form action="#" method="post">
         <input type="text" name="nouv_titre">
         <input type="submit" value="Créer">
@@ -41,9 +52,10 @@ if (empty($_GET["id_sujet"])){
 <?php }else{ ?>
     <form id="insert" method="post">
         <input name="titre" type="text" value="<?php
-		echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
-		?>" />
-        <!-- Create the editor container -->
+        echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
+        ?>" />
+        <!-- Create the editor container
+        Problème avec le css, on ne voit pas les enrichissements de texte-->
         <div class="row form-group">
             <div id="editor-container"></div>
         </div>
@@ -51,31 +63,33 @@ if (empty($_GET["id_sujet"])){
             <button onclick="transforme()">Sauvegarder</button>
         </div>
         <input name="sujet_file" type="hidden"/>
+        <input name="sujet_file_html" type="hidden"/>
     </form>
 <?php }
-if (!empty($_POST["sujet_file"]) && !empty($_POST["titre"])){
-	$sujet = new Sujet($_POST);
-	$sujet->setTitre($_POST["titre"]);
-	$sujet->setSujetFile($_POST["sujet_file"]);
-	$sujet->setIdSujet($_GET["id_sujet"]);
-	print_r($sujet);
-	$sujetManager->save($sujet);
+if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty($_POST["titre"])){
+    $sujet = new Sujet($_POST);
+    $sujet->setIdSujet($_GET["id_sujet"]);
+    $sujetManager->save($sujet);
 }
 ?>
 </body>
 <script>
-    function transforme(){
-        var sujet_file = document.querySelector('input[name=sujet_file]');
 
-        sujet_file.value = JSON.stringify(quill.getContents());
-
-        return false;
-    }
     var quill = new Quill('#editor-container', {
         modules: {
             toolbar: toolbarOptions
         },
         theme: 'snow'
     });
+
+    function transforme(){
+        var sujet_file = document.querySelector('input[name=sujet_file]');
+        var sujet_file_html = document.querySelector('input[name=sujet_file_html]');
+
+        sujet_file.value = JSON.stringify(quill.getContents());
+        sujet_file_html.value = quill.root.innerHTML;
+
+        return false;
+    }
 </script>
 </html>
