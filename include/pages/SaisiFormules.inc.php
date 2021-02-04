@@ -329,7 +329,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
     $Equation = $formuleManager->getEq($_GET["ModifNum_eq"]);
 
     ?>
-    
+
     <form method="post" action="#">
 
       <p>Modification</p>

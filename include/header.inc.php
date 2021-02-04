@@ -47,14 +47,20 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#">Formules &dtrif;</a>
                     <ul class="dropdown">
-                        <li><a href="#">Créer une formule</a></li>
+                        <li><a href="index.php?page=2">Créer une formule</a></li>
                         <li><a href="#">Voir les formules</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Sujets &dtrif;</a>
                     <ul class="dropdown">
-                        <li><a href="#">Créer un sujet</a></li>
+                        <li><a href="index.php?page=3">Créer un sujet</a></li>
                         <li><a href="#">Importer des images</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Eleves &dtrif;</a>
+                    <ul class="dropdown">
+                        <li><a href="index.php?page=3">Importer une liste d'élèves</a></li>
+                        <li><a href="index.php?page=1">Importer le fichier excel des sujets</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Informations</a></li>
@@ -64,29 +70,29 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
 
 <?php
 }  ?>
-	<body>
-		<div id="header">
-		    <div id="entete">
+<body>
+  <div id="header">
+      <div id="entete">
 
-		    </div>
-		    <div id="connect">
-		        <a href="index.php?page=1">inserer Tableau excel</a>
-		    </div>
-		    <div id="connect">
-		        <a href="index.php?page=2">Saisi formules</a>
-		    </div>
-		    <div id="connect">
-		        <a href="index.php?page=3">Créer un sujet</a>
-		    </div>
-				<div id="connect">
-		        <a href="index.php?page=4">Connexion</a>
-		    </div>
-				<div id="connect">
-		        <a href="index.php?page=5">page_eleve</a>
-		    </div>
-				<div id="connect">
-		        <a href="index.php?page=6">page_prof</a>
-		    </div>
-		</div>
+      </div>
+      <div id="connect">
+          <a href="index.php?page=1">inserer Tableau excel</a>
+      </div>
+      <div id="connect">
+          <a href="index.php?page=2">Saisi formules</a>
+      </div>
+      <div id="connect">
+          <a href="index.php?page=3">Créer un sujet</a>
+      </div>
+      <div id="connect">
+          <a href="index.php?page=4">Connexion</a>
+      </div>
+      <div id="connect">
+          <a href="index.php?page=5">page_eleve</a>
+      </div>
+      <div id="connect">
+          <a href="index.php?page=6">page_prof</a>
+      </div>
+  </div>
 <?php }
  ?>

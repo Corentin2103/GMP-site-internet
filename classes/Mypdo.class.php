@@ -1,17 +1,12 @@
-<?php
-class Mypdo extends PDO
-{
+<?php class Mypdo extends PDO {
 
 	protected $dbo;
-
-	public function __construct ()
-	{
+	public function __construct () {
 
 		if (ENV=='dev'){
 			$bool=true;
 		}
-		else
-		{
+		else {
 			$bool=false;
 		}
 		try {
@@ -23,7 +18,4 @@ class Mypdo extends PDO
 			echo '�chec lors de la connexion : ' . $e->getMessage();
 		}
 	}
-
-}
-
-?>
+} ?>
