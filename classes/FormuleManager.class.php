@@ -13,7 +13,9 @@ class FormuleManager{
           $requete->bindValue(':marge',$variable->getMarge());
 
           $retour=$requete->execute();
-          return $retour;
+          $num = $this->db->lastInsertID();
+          return $num;
+
       }
       public function getAllForm(){
         $listeFormule = array();
