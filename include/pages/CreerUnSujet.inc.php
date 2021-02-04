@@ -15,47 +15,48 @@ $pdo = new Mypdo();
 $sujetManager = new sujetManager($pdo);
 $listeSujets = $sujetManager->getAllSujets();
 if (empty($_GET["id_sujet"])){ //Choix du sujet
-    if (!empty($_POST["nouv_titre"])){
-        if ($sujetManager->titreDejaPresent($_POST["nouv_titre"])){
-            $erreurTitre = true;
-        }else {
-            $erreurTitre = false;
-            $sujet = new Sujet($_POST);
-            $sujet->setTitre($_POST["nouv_titre"]);
-            $sujetManager->add($sujet);
-            $lastInsertId = $pdo->lastInsertId();
-            echo $lastInsertId;
-            header("Location : index.php?page=3");
-        }
-    } ?>
+if (!empty($_POST["nouv_titre"])){
+	if ($sujetManager->titreDejaPresent($_POST["nouv_titre"])){
+		$erreurTitre = true;
+	}else {
+		$erreurTitre = false;
+		$sujet = new Sujet($_POST);
+		$sujet->setTitre($_POST["nouv_titre"]);
+		$sujetManager->add($sujet);
+		$lastInsertId = $pdo->lastInsertId();
+		echo $lastInsertId;
+		header("Location : index.php?page=3");
+	}
+} ?>
     <h1>Veuillez choisir un sujet</h1>
     <table>
-        <?php
-        foreach ($listeSujets as $sujet){
-            ?>
+		<?php
+		$listeSujets = $sujetManager->getAllSujets();
+		foreach ($listeSujets as $sujet){
+			?>
             <tr>
                 <td><?php echo $sujet->getTitre(); ?></td>
                 <td><a href="index.php?page=3&id_sujet=<?php echo $sujet->getIdSujet(); ?>" id="btn-choix">Choisir</a></td>
             </tr>
-        <?php }
-        ?>
+		<?php }
+		?>
     </table>
-    <?php if (isset($erreurTitre) && $erreurTitre){ ?>
-        <div id="erreurTitre">
+	<?php if (isset($erreurTitre) && $erreurTitre){ ?>
+    <div id="erreurTitre">
         <label>Le titre <?php echo $_POST["nouv_titre"]; ?> existe dejà.</label>
-    <?php } ?>
+		<?php } ?>
     </div>
     <form action="#" method="post">
         <input type="text" name="nouv_titre">
         <input type="submit" value="Créer">
     </form>
-<?php }else{ ?>
+	<?php }else{ ?>
     <form id="insert" method="post">
         <input name="titre" type="text" value="<?php
-        echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
-        ?>" />
+		echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
+		?>" />
         <!-- Create the editor container
-        Problème avec le css, on ne voit pas les enrichissements de texte-->
+		Problème avec le css, on ne voit pas les enrichissements de texte-->
         <div class="row form-group">
             <div id="editor-container"></div>
         </div>
@@ -65,16 +66,19 @@ if (empty($_GET["id_sujet"])){ //Choix du sujet
         <input name="sujet_file" type="hidden"/>
         <input name="sujet_file_html" type="hidden"/>
     </form>
-<?php }
-if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty($_POST["titre"])){
-    $sujet = new Sujet($_POST);
-    $sujet->setIdSujet($_GET["id_sujet"]);
-    $sujetManager->save($sujet);
-}
-?>
+	<?php }
+	if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty($_POST["titre"])){
+		$sujet = new Sujet($_POST);
+		$sujet->setIdSujet($_GET["id_sujet"]);
+		$sujetManager->save($sujet);
+		$texte_brut = strip_tags($_POST["sujet_file_html"]);
+		print_r($texte_brut);
+		preg_match("<<",$texte_brut,$matches,PREG_OFFSET_CAPTURE);
+		print_r($matches);
+	}
+	?>
 </body>
 <script>
-
     var quill = new Quill('#editor-container', {
         modules: {
             toolbar: toolbarOptions
