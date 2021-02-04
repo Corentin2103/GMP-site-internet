@@ -1,9 +1,9 @@
 <?php
-// Param�tres de l'application Covoiturage
+// Param�tres du site pt gmp
 // A modifier en fonction de la configuration
 
 define('DBHOST', "localhost");
-define('PORT', "3306"); // à changer SI MySQL utilise un autre port (à vérifier dans PhpMyadmin)
+define('PORT', "3307"); // à changer SI MySQL utilise un autre port (à vérifier dans PhpMyadmin) Léo --> 3307
 define('DBNAME', "pt_gmp");
 define('DBUSER', "root");
 define('DBPASSWD', "");
