@@ -15,19 +15,19 @@ $pdo = new Mypdo();
 $sujetManager = new sujetManager($pdo);
 $listeSujets = $sujetManager->getAllSujets();
 if (empty($_GET["id_sujet"])){ //Choix du sujet
-if (!empty($_POST["nouv_titre"])){
-	if ($sujetManager->titreDejaPresent($_POST["nouv_titre"])){
-		$erreurTitre = true;
-	}else {
-		$erreurTitre = false;
-		$sujet = new Sujet($_POST);
-		$sujet->setTitre($_POST["nouv_titre"]);
-		$sujetManager->add($sujet);
-		$lastInsertId = $pdo->lastInsertId();
-		echo $lastInsertId;
-		header("Location : index.php?page=3");
-	}
-} ?>
+	if (!empty($_POST["nouv_titre"])){
+		if ($sujetManager->titreDejaPresent($_POST["nouv_titre"])){
+			$erreurTitre = true;
+		}else {
+			$erreurTitre = false;
+			$sujet = new Sujet($_POST);
+			$sujet->setTitre($_POST["nouv_titre"]);
+			$sujetManager->add($sujet);
+			$lastInsertId = $pdo->lastInsertId();
+			echo $lastInsertId;
+			header("Location : index.php?page=3");
+		}
+	} ?>
     <h1>Veuillez choisir un sujet</h1>
     <table>
 		<?php
@@ -42,15 +42,15 @@ if (!empty($_POST["nouv_titre"])){
 		?>
     </table>
 	<?php if (isset($erreurTitre) && $erreurTitre){ ?>
-    <div id="erreurTitre">
+        <div id="erreurTitre">
         <label>Le titre <?php echo $_POST["nouv_titre"]; ?> existe dejà.</label>
-		<?php } ?>
+	<?php } ?>
     </div>
     <form action="#" method="post">
         <input type="text" name="nouv_titre">
         <input type="submit" value="Créer">
     </form>
-	<?php }else{ ?>
+<?php }else{ ?>
     <form id="insert" method="post">
         <input name="titre" type="text" value="<?php
 		echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
@@ -66,17 +66,33 @@ if (!empty($_POST["nouv_titre"])){
         <input name="sujet_file" type="hidden"/>
         <input name="sujet_file_html" type="hidden"/>
     </form>
-	<?php }
-	if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty($_POST["titre"])){
-		$sujet = new Sujet($_POST);
-		$sujet->setIdSujet($_GET["id_sujet"]);
-		$sujetManager->save($sujet);
-		$texte_brut = strip_tags($_POST["sujet_file_html"]);
-		print_r($texte_brut);
-		preg_match("<<",$texte_brut,$matches,PREG_OFFSET_CAPTURE);
-		print_r($matches);
-	}
-	?>
+<?php }
+if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty($_POST["titre"])){
+	$sujet = new Sujet($_POST);
+	$sujet->setIdSujet($_GET["id_sujet"]);
+	$sujetManager->save($sujet);
+
+	$texte_brut = strip_tags($_POST["sujet_file_html"]);
+	$nb_iter_debut = substr_count($texte_brut,"{{");
+	$nb_iter_fin = substr_count($texte_brut,"}}");
+	$nb_iter = min($nb_iter_debut,$nb_iter_fin);
+	for ($i = 0; $i < $nb_iter; $i++) {
+		$pos = strpos($texte_brut, "{{");
+		$new_texte_brut = substr($texte_brut, $pos + 2);
+		$pos_fin = strpos($new_texte_brut, "}}");
+		$variable = substr($new_texte_brut, 0, $pos_fin);
+		$texte_brut=substr($new_texte_brut,2);
+		$tab_variable[$i] = $variable;
+	}?>
+    <table><?php
+		foreach ($tab_variable as $variable){ ?>
+            <tr>
+                <td><?php echo $variable; ?></td>
+            </tr>
+		<?php } ?>
+    </table> <?php
+}
+?>
 </body>
 <script>
     var quill = new Quill('#editor-container', {
