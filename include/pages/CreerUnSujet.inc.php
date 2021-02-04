@@ -24,8 +24,6 @@ if (empty($_GET["id_sujet"])){ //Choix du sujet
 			$sujet->setTitre($_POST["nouv_titre"]);
 			$sujetManager->add($sujet);
 			$lastInsertId = $pdo->lastInsertId();
-			echo $lastInsertId;
-			header("Location : index.php?page=3");
 		}
 	} ?>
     <h1>Veuillez choisir un sujet</h1>
@@ -85,10 +83,14 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty(
 		$tab_variable[$i] = $variable;
 	}?>
     <table><?php
-		foreach ($tab_variable as $variable){ ?>
-            <tr>
-                <td><?php echo $variable; ?></td>
-            </tr>
+		if(isset($tab_variable)){
+			foreach ($tab_variable as $variable){ ?>
+                <tr>
+                    <td><?php echo $variable; ?></td>
+                </tr>
+			<?php }
+		}else{
+			?> <p>Aucune champ variable détecté</p>
 		<?php } ?>
     </table> <?php
 }

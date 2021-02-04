@@ -85,6 +85,9 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
           <a href="index.php?page=3">Créer un sujet</a>
       </div>
       <div id="connect">
+          <a href="index.php?page=8">Supprimer un sujet</a>
+      </div>
+      <div id="connect">
           <a href="index.php?page=4">Connexion</a>
       </div>
       <div id="connect">
@@ -93,6 +96,7 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
       <div id="connect">
           <a href="index.php?page=6">page_prof</a>
       </div>
+
   </div>
 <?php }
  ?>

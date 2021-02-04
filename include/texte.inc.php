@@ -11,10 +11,10 @@
 //
 // Personnes
 //
-case 0:
-	// inclure ici la page accueil photo
-	include_once('pages/connexion.inc.php');
-	break;
+		case 0:
+			// inclure ici la page accueil photo
+			include_once('pages/connexion.inc.php');
+			break;
 		case 1:
 			// inclure ici la page accueil photo
 			include_once('pages/insererTabExcel.inc.php');
@@ -40,9 +40,12 @@ case 0:
 		case 6:
 			include("pages/page_prof.inc.php");
 			break;
-			case 7:
-				include("pages/deconnexion.inc.php");
-				break;
+		case 7:
+			include("pages/deconnexion.inc.php");
+			break;
+		case 8:
+		    include("pages/SupprimerSujet.inc.php");
+			break;
 
 
 		default : 	include_once('connexion.inc.php');
