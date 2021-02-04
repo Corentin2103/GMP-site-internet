@@ -12,8 +12,9 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
 }
 
 ?>
-<html>
-<head>
+
+<div class="header">
+
 
   <link rel="stylesheet" type="text/css" href="../../css/stylesheet.css" />
   <script>
@@ -57,9 +58,10 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
 
   }
   </script>
+
+
   <style>
   td button{width:100%}
-  <style>
   body {font-family: Arial, Helvetica, sans-serif;}
   * {box-sizing: border-box;}
   input{
@@ -162,9 +164,9 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
     }
   }
 </style>
-</style>
-</head>
-<body id="body">
+
+
+
   <?php
   if(empty($_GET["SuppNum_eq"])&&empty($_GET["ModifNum_eq"])){
     ?>
@@ -329,7 +331,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
     $Equation = $formuleManager->getEq($_GET["ModifNum_eq"]);
 
     ?>
-    
+
     <form method="post" action="#">
 
       <p>Modification</p>
@@ -352,6 +354,4 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
 
   ?>
 
-
-</body>
-</html>
+</div>

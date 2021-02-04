@@ -21,9 +21,16 @@
   <component name="ChangeListManager">
     <list default="true" id="a28171e7-7b71-4342-b275-f6fd39f6b3b9" name="Default Changelist" comment="Ajout transformation texte écrit dans quillJs en html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/classes/Mypdo.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Mypdo.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/config.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/config.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/pages/connexion.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/pages/connexion.inc.php" afterDir="false" />
+<<<<<<< Updated upstream
+      <change beforePath="$PROJECT_DIR$/classes/CreerUnSujet.class.js" beforeDir="false" afterPath="$PROJECT_DIR$/classes/CreerUnSujet.class.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/Sujet.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/Sujet.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classes/sujetManager.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/classes/sujetManager.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style_css.css" afterDir="false" />
+=======
+>>>>>>> Stashed changes
+      <change beforePath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/include/pages/CreerUnSujet.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/lodash.isequal/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/lodash.isequal/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/quill-delta-to-html/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/quill-delta-to-html/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +45,7 @@
       <list>
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="package.json" />
       </list>
     </option>
   </component>
@@ -55,7 +63,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.15.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.22" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -63,6 +72,8 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -87,12 +98,13 @@
       <workItem from="1609860761541" duration="19538000" />
       <workItem from="1610350312148" duration="22000" />
       <workItem from="1610350435874" duration="16335000" />
-      <workItem from="1610622657955" duration="3104000" />
-      <workItem from="1610696353341" duration="2553000" />
-      <workItem from="1612091661933" duration="697000" />
-      <workItem from="1612093818657" duration="2767000" />
-      <workItem from="1612110191670" duration="1367000" />
-      <workItem from="1612268804464" duration="2260000" />
+<<<<<<< Updated upstream
+      <workItem from="1611322728415" duration="1326000" />
+      <workItem from="1611827551794" duration="8572000" />
+      <workItem from="1612004120263" duration="6541000" />
+=======
+      <workItem from="1611644063855" duration="7000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="CreerUnSujet : texte en gras, italic et souligné">
       <created>1608218219535</created>
@@ -138,15 +150,5 @@
     <MESSAGE value="Ajout QuillJs pour traitement de texte" />
     <MESSAGE value="Ajout transformation texte écrit dans quillJs en html" />
     <option name="LAST_COMMIT_MESSAGE" value="Ajout transformation texte écrit dans quillJs en html" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="667" y="183" key="#PHP" timestamp="1612095874773">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="667" y="183" key="#PHP/0.0.1920.1080@0.0.1920.1080" timestamp="1612095874773" />
-    <state x="794" y="463" key="NewPhpFileDialog" timestamp="1610697283682">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="794" y="463" key="NewPhpFileDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1610697283682" />
   </component>
 </project>
