@@ -92,7 +92,14 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty(
 		}else{
 			?> <p>Aucune champ variable détecté</p>
 		<?php } ?>
-    </table> <?php
+    </table>
+    <form action="#" method="post">
+        <input type="submit" name="export" value="Exporter en pdf">
+    </form>
+	<?php
+	if(isset($_POST['export'])){
+
+	}
 }
 ?>
 </body>
