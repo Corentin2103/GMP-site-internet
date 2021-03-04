@@ -54,12 +54,14 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
                 <li><a href="#">Sujets &dtrif;</a>
                     <ul class="dropdown">
                         <li><a href="index.php?page=3">Créer un sujet</a></li>
+                        <li><a href="index.php?page=8">Supprimer un Sujet</a></li>
                         <li><a href="#">Importer des images</a></li>
+                        <li><a href="index.php?page=9">Créer une correction</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Eleves &dtrif;</a>
                     <ul class="dropdown">
-                        <li><a href="index.php?page=3">Importer une liste d'élèves</a></li>
+                        <li><a href="index.php?page=4">Importer une liste d'élèves</a></li>
                         <li><a href="index.php?page=1">Importer le fichier excel des sujets</a></li>
                     </ul>
                 </li>

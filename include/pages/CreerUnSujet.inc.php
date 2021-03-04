@@ -58,17 +58,20 @@ if (empty($_GET["id_sujet"])){ //Choix du sujet
         <div class="row form-group">
             <div id="editor-container"></div>
         </div>
+
+        <input name="sujet_file" type="hidden"/>
+        <input name="sujet_file_html" type="hidden"/>
         <div class="row">
             <button onclick="transforme()">Sauvegarder</button>
         </div>
-        <input name="sujet_file" type="hidden"/>
-        <input name="sujet_file_html" type="hidden"/>
     </form>
 <?php }
 if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty($_POST["titre"])){
 	$sujet = new Sujet($_POST);
 	$sujet->setIdSujet($_GET["id_sujet"]);
 	$sujetManager->save($sujet);
+	$formuleManager = new FormuleManager($pdo);
+	$formules = $formuleManager->getAllForm();
 
 	$texte_brut = strip_tags($_POST["sujet_file_html"]);
 	$nb_iter_debut = substr_count($texte_brut,"{{");
@@ -87,19 +90,32 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty(
 			foreach ($tab_variable as $variable){ ?>
                 <tr>
                     <td><?php echo $variable; ?></td>
+                    <td><select name="var_remplacement">
+                            <option value="variable1">var1</option>
+                            <option value="variable2">var2</option>
+                            <option value="variable3">var3</option>
+                            <option value="variable4">var4</option>
+                            <option value="variable5">var5</option>
+                            <option value="variable6">var6</option>
+                            <option value="variable7">var7</option>
+                            <option value="variable8">var8</option>
+                            <option value="variable9">var9</option>
+							<?php
+							foreach($formules as $formule){
+								?><option value="<?php echo $formule->getNumEq(); ?>"><?php echo $formule->getLibEq(); ?></option>
+								<?php
+							}
+							?>
+                        </select>
+                    </td>
                 </tr>
 			<?php }
 		}else{
 			?> <p>Aucune champ variable détecté</p>
 		<?php } ?>
     </table>
-    <form action="#" method="post">
-        <input type="submit" name="export" value="Exporter en pdf">
-    </form>
-	<?php
-	if(isset($_POST['export'])){
 
-	}
+	<?php
 }
 ?>
 </body>

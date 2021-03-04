@@ -44,7 +44,10 @@
 			include("pages/deconnexion.inc.php");
 			break;
 		case 8:
-		    include("pages/SupprimerSujet.inc.php");
+			include("pages/SupprimerSujet.inc.php");
+			break;
+		case 9:
+			include("pages/creerUneCorrection.inc.php");
 			break;
 
 
