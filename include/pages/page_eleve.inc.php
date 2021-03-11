@@ -7,8 +7,12 @@
     <script type="text/javascript" src="../../javascript/script.js"></script>
 </head>
 <body>
-<!-- A U C U N   P H P   P O U R   L E   M O M E N T -->
+
+<?php $pdo = new Mypdo();
+$manager = new ReponseManager($pdo); ?>
+
 <!-- Quesiton 1 -->
+<?php if(empty($_POST['answer1']) && empty($_POST['unite1'])) { //premier appel ?>
 <div class="question">
     <h1>Question 1</h1>
     
@@ -18,21 +22,47 @@
     </div>
 
     <div class="sous-question">
-        <input type="number" id="answer1" name="answer" placeholder="Votre réponse">
-        <select name=unite" id="unite-select1">
-            <option value="">  Choisir l'unité  </option>
-            <option value="metre">m</option>
-            <option value="newton">N</option>
-            <option value="newtion_par_metre">N.m²</option>
-        </select>
+        <form action="#" method=""POST">
+            <select name=unite1" ">
+                <option value="">  Choisir l'unité  </option>
+                <option value="metre">m</option>
+                <option value="newton">N</option>
+                <option value="newtion_par_metre">N.m²</option>
+            </select>
+        </form>
+        <input type="number" name="answer1" placeholder="Votre réponse">
     </div>
+
     <!-- bouton enregistrer -->
     <div class="buttons">
         <div class="container">
-            <button class="btn effect01" target="_blank"><span>Enregistrer</span></button>
+            <button typ="submit" class="btn effect01" target="_blank"><span>Enregistrer</span></button>
         </div>
     </div>
 </div>
+
+<?php } else { //ajout dans la base de données}
+
+    $reponse = new Reponse($_POST);
+    $retour = $manager->add($reponse);
+
+    echo 'La réponse a été ajoutée';
+} ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Quesiton 2 -->
     <div class="question">
