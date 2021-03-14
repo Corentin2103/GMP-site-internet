@@ -26,7 +26,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  } 
+  }
   //fonction qui évalue le chiffre et renvoie la sortie
   function calculer()
   {
@@ -60,126 +60,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
   </script>
 
 
-  <style>
-  td button{width:100%}
-  body {font-family: Arial, Helvetica, sans-serif;}
-  * {box-sizing: border-box;}
-  input{
-    width: 300px;
-  }
-  /* Set a style for all buttons */
-  button {
 
-
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-  }
-
-  button:hover {
-    opacity:1;
-  }
-
-  /* Float cancel and delete buttons and add an equal width */
-  .cancelbtn, .deletebtn {
-    float: left;
-    width: 50%;
-  }
-
-  /* Add a color to the cancel button */
-  .cancelbtn {
-    background-color: #ccc;
-    color: black;
-  }
-
-  /* Add a color to the delete button */
-  .deletebtn {
-    background-color: #f44336;
-  }
-
-  /* Add padding and center-align text to the container */
-  .container {
-    padding: 16px;
-    text-align: center;
-  }
-
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: #474e5d;
-    padding-top: 50px;
-  }
-
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-
-  /* Style the horizontal ruler */
-  hr {
-    border: 1px solid #f1f1f1;
-    margin-bottom: 25px;
-  }
-  .header{
-    background-color: white;
-  }
-  /* The Modal Close Button (x) */
-  .close {
-    position: absolute;
-    right: 35px;
-    top: 15px;
-    font-size: 40px;
-    font-weight: bold;
-    color: #f1f1f1;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: #f44336;
-    cursor: pointer;
-  }
-  div .calculatrice{
-    margin-left: 25%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    padding-top: 5%;
-  }
-  div .tableau{
-    margin-left: 25%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    padding-bottom: 5%;
-  }
-  .tableau td,tr,th{
-    border-right: 50px;
-  }
-  /* Clear floats */
-  .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-
-  /* Change styles for cancel button and delete button on extra small screens */
-  @media screen and (max-width: 300px) {
-    .cancelbtn, .deletebtn {
-      width: 100%;
-    }
-  }
-</style>
 
 
 
@@ -238,7 +119,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
       </form>
 
     </div>
-    <div class="tableau">
+    <div class="tableau calculatrice">
     <table>
       <tr>
         <th>
