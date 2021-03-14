@@ -36,9 +36,7 @@ if (empty($_POST["per_mail"]) && empty($_POST["per_mdp"])){ ?>
       </form>
   </div>
 
-  <div class="login-help">
-      <p>Mot de passe oublié? <a href="#">Appuyer ici pour le modifier</a>.</p>
-  </div>
+  
 </form>
 
 <?php }

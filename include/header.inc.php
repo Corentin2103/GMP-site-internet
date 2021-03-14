@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 if(empty($_SESSION["estConnecte"])){
 $_SESSION["estConnecte"] = false;
 }
@@ -13,24 +13,27 @@ if($_SESSION["estConnecte"]){
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/style_css.css" />
 </head>
-
+<div class="profil">
+  <label ><?php echo $_SESSION["Login"] ?></label><br>
+  <a href="index.php?page=7" >Déconnexion</a>
+</div>
 <?php
 $pdo = new Mypdo();
 $etudiantManager = new EtudiantManager($pdo);
 $professeurManager = new ProfesseurManager($pdo);
+
 if($etudiantManager->estPresent($_SESSION["per_num"])){
+
+
  ?>
 
 <!-- menu élève -->
     <body>
         <nav role="navigation" class="primary-navigation">
             <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Questions &dtrif;</a>
-                    <ul class="dropdown">
-                        <li><a href="#">Question 1</a></li>
-                        <li><a href="#">Question 2</a></li>
-                    </ul>
+                <li><a href="index.php?page=9">Accueil</a></li>
+                <li><a href="index.php?page=5">Répondre aux sujets </a>
+
                 </li>
                 <li><a href="#">Informations</a></li>
             </ul>
@@ -38,6 +41,7 @@ if($etudiantManager->estPresent($_SESSION["per_num"])){
     </body>
 
 <?php
+
 }
 if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
 <!-- menu professeur -->
@@ -71,7 +75,12 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
     </body>
 
 <?php
-}  ?>
+}?>
+<?php
+/* ?>
+
+
+
 <body>
   <div id="header">
       <div id="entete">
@@ -86,6 +95,8 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
       <div id="connect">
           <a href="index.php?page=3">Créer un sujet</a>
       </div>
+<<<<<<< HEAD
+=======
       <div id="connect">
           <a href="index.php?page=8">Supprimer un sujet</a>
       </div>
@@ -98,7 +109,10 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
       <div id="connect">
           <a href="index.php?page=6">page_prof</a>
       </div>
+>>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
 
   </div>
-<?php }
- ?>
+
+
+ */
+}?>

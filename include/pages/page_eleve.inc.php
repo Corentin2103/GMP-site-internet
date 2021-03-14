@@ -12,25 +12,32 @@
 $manager = new ReponseManager($pdo); ?>
 
 <!-- Quesiton 1 -->
+
+
+
 <?php if(empty($_POST['answer1']) && empty($_POST['unite1'])) { //premier appel ?>
-<div class="question">
+<div class="question1">
+
     <h1>Question 1</h1>
-    
+
     <div class="rap">
         <h2>Rappel du sujet</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere felis a auctor faucibus. Suspendisse accumsan, urna sed lobortis finibus, urna urna aliquet quam, pulvinar pellentesque orci mauris sed tortor. Donec molestie ligula sed urna volutpat faucibus non eget urna. Nam rhoncus ullamcorper neque, eu luctus ex malesuada in. Mauris porta dictum turpis at molestie.</p>
     </div>
 
     <div class="sous-question">
-        <form action="#" method=""POST">
-            <select name=unite1" ">
-                <option value="">  Choisir l'unité  </option>
-                <option value="metre">m</option>
-                <option value="newton">N</option>
-                <option value="newtion_par_metre">N.m²</option>
-            </select>
-        </form>
-        <input type="number" name="answer1" placeholder="Votre réponse">
+
+        <input type="number" id="answer1" name="answer" placeholder="Votre réponse">
+        <select name="unite" id="unite-select1">
+            <option value="">  Choisir l'unité  </option>
+            <option value="metre">m</option>
+            <option value="newton">N</option>
+            <option value="newtion_par_metre">N.m²</option>
+        </select>
+
+
+
+
     </div>
 
     <!-- bouton enregistrer -->
@@ -65,11 +72,15 @@ $manager = new ReponseManager($pdo); ?>
 
 
     <!-- Quesiton 2 -->
-    <div class="question">
+    <div class="question2">
         <h1>Question 2</h1>
+        <div class="rap">
+            <h2>Rappel du sujet</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere felis a auctor faucibus. Suspendisse accumsan, urna sed lobortis finibus, urna urna aliquet quam, pulvinar pellentesque orci mauris sed tortor. Donec molestie ligula sed urna volutpat faucibus non eget urna. Nam rhoncus ullamcorper neque, eu luctus ex malesuada in. Mauris porta dictum turpis at molestie.</p>
+        </div>
         <div class="sous-question">
             <input type="number" id="answer2" name="answer" placeholder="Votre réponse">
-            <select name=unite" id="unite-select2">
+            <select name="unite" id="unite-select2">
                 <option value="">  Choisir l'unité  </option>
                 <option value="metre">m</option>
                 <option value="newton">N</option>
