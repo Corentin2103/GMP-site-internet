@@ -11,7 +11,7 @@
 //
 // Personnes
 //
-<<<<<<< HEAD
+
 case 0:
 $pdo = new Mypdo();
 $etudiantManager = new EtudiantManager($pdo);
@@ -23,12 +23,11 @@ if($etudiantManager->estPresent($_SESSION["per_num"])){
 	include_once('pages/connexion.inc.php');
 }
 	break;
-=======
 		case 0:
 			// inclure ici la page accueil photo
 			include_once('pages/connexion.inc.php');
 			break;
->>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
+
 		case 1:
 
 			include_once('pages/insererTabExcel.inc.php');
@@ -54,7 +53,7 @@ if($etudiantManager->estPresent($_SESSION["per_num"])){
 		case 6:
 			include("pages/page_prof.inc.php");
 			break;
-<<<<<<< HEAD
+
 			case 7:
 				include("pages/deconnexion.inc.php");
 				break;
@@ -64,7 +63,7 @@ if($etudiantManager->estPresent($_SESSION["per_num"])){
 					case 9:
 						include("pages/accueil_eleve.inc.php");
 						break;
-=======
+
 		case 7:
 			include("pages/deconnexion.inc.php");
 			break;
@@ -74,7 +73,7 @@ if($etudiantManager->estPresent($_SESSION["per_num"])){
 		case 9:
 			include("pages/creerUneCorrection.inc.php");
 			break;
->>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
+
 
 
 		default : 	include_once('connexion.inc.php');
