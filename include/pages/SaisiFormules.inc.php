@@ -26,7 +26,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
     if (event.target == modal) {
       modal.style.display = "none";
     }
-  }
+  } 
   //fonction qui évalue le chiffre et renvoie la sortie
   function calculer()
   {
@@ -56,7 +56,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
 
     afficher()
 
-  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+  }
   </script>
 
 
@@ -133,7 +133,9 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
   }
-
+  .header{
+    background-color: white;
+  }
   /* The Modal Close Button (x) */
   .close {
     position: absolute;
@@ -149,7 +151,21 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
     color: #f44336;
     cursor: pointer;
   }
-
+  div .calculatrice{
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-top: 5%;
+  }
+  div .tableau{
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    padding-bottom: 5%;
+  }
+  .tableau td,tr,th{
+    border-right: 50px;
+  }
   /* Clear floats */
   .clearfix::after {
     content: "";
@@ -170,7 +186,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
   <?php
   if(empty($_GET["SuppNum_eq"])&&empty($_GET["ModifNum_eq"])){
     ?>
-
+    <div class="calculatrice">
     <table id="Dispawn" border="1">
       <tr>
 
@@ -210,6 +226,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
         <td><button onclick="afficher('/')">/</button></td>
       </tr>
     </table>
+  </div>
     <div style="display:none;" id="main">
       <form method="post" action="#">
 
@@ -221,6 +238,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
       </form>
 
     </div>
+    <div class="tableau">
     <table>
       <tr>
         <th>
@@ -264,6 +282,8 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
       }
       ?>
     </table>
+  </div>
+  <div class="tableau">
     <table>
       <tr>
         <th>
@@ -318,6 +338,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
 
       </tr>
     </table>
+  </div>
     <?php
   }
 
