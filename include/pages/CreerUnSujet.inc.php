@@ -10,6 +10,7 @@
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
+<<<<<<< HEAD
   <?php
   $pdo = new Mypdo();
   $sujetManager = new sujetManager($pdo);
@@ -28,6 +29,24 @@
         header("Location : index.php?page=3");
       }
     } ?>
+=======
+<?php
+$pdo = new Mypdo();
+$sujetManager = new sujetManager($pdo);
+$listeSujets = $sujetManager->getAllSujets();
+if (empty($_GET["id_sujet"])){ //Choix du sujet
+	if (!empty($_POST["nouv_titre"])){
+		if ($sujetManager->titreDejaPresent($_POST["nouv_titre"])){
+			$erreurTitre = true;
+		}else {
+			$erreurTitre = false;
+			$sujet = new Sujet($_POST);
+			$sujet->setTitre($_POST["nouv_titre"]);
+			$sujetManager->add($sujet);
+			$lastInsertId = $pdo->lastInsertId();
+		}
+	} ?>
+>>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
     <h1>Veuillez choisir un sujet</h1>
     <table>
       <?php
@@ -53,6 +72,7 @@
     </form>
   <?php }else{ ?>
     <form id="insert" method="post">
+<<<<<<< HEAD
       <input name="titre" type="text" value="<?php
       echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
       ?>" />
@@ -102,6 +122,84 @@
     },
     theme: 'snow'
   });
+=======
+        <input name="titre" type="text" value="<?php
+		echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
+		?>" />
+        <!-- Create the editor container
+		Problème avec le css, on ne voit pas les enrichissements de texte-->
+        <div class="row form-group">
+            <div id="editor-container"></div>
+        </div>
+
+        <input name="sujet_file" type="hidden"/>
+        <input name="sujet_file_html" type="hidden"/>
+        <div class="row">
+            <button onclick="transforme()">Sauvegarder</button>
+        </div>
+    </form>
+<?php }
+if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty($_POST["titre"])){
+	$sujet = new Sujet($_POST);
+	$sujet->setIdSujet($_GET["id_sujet"]);
+	$sujetManager->save($sujet);
+	$formuleManager = new FormuleManager($pdo);
+	$formules = $formuleManager->getAllForm();
+
+	$texte_brut = strip_tags($_POST["sujet_file_html"]);
+	$nb_iter_debut = substr_count($texte_brut,"{{");
+	$nb_iter_fin = substr_count($texte_brut,"}}");
+	$nb_iter = min($nb_iter_debut,$nb_iter_fin);
+	for ($i = 0; $i < $nb_iter; $i++) {
+		$pos = strpos($texte_brut, "{{");
+		$new_texte_brut = substr($texte_brut, $pos + 2);
+		$pos_fin = strpos($new_texte_brut, "}}");
+		$variable = substr($new_texte_brut, 0, $pos_fin);
+		$texte_brut=substr($new_texte_brut,2);
+		$tab_variable[$i] = $variable;
+	}?>
+    <table><?php
+		if(isset($tab_variable)){
+			foreach ($tab_variable as $variable){ ?>
+                <tr>
+                    <td><?php echo $variable; ?></td>
+                    <td><select name="var_remplacement">
+                            <option value="variable1">var1</option>
+                            <option value="variable2">var2</option>
+                            <option value="variable3">var3</option>
+                            <option value="variable4">var4</option>
+                            <option value="variable5">var5</option>
+                            <option value="variable6">var6</option>
+                            <option value="variable7">var7</option>
+                            <option value="variable8">var8</option>
+                            <option value="variable9">var9</option>
+							<?php
+							foreach($formules as $formule){
+								?><option value="<?php echo $formule->getNumEq(); ?>"><?php echo $formule->getLibEq(); ?></option>
+								<?php
+							}
+							?>
+                        </select>
+                    </td>
+                </tr>
+			<?php }
+		}else{
+			?> <p>Aucune champ variable détecté</p>
+		<?php } ?>
+    </table>
+
+	<?php
+}
+?>
+</body>
+<script>
+    var quill = new Quill('#editor-container', {
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'snow'
+    });
+>>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
 
   function transforme(){
     var sujet_file = document.querySelector('input[name=sujet_file]');

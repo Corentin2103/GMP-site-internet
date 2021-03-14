@@ -81,4 +81,10 @@ class sujetManager{
 
 		$requete->closeCursor();
 	}
+
+	public function supprimerSujet($id_sujet) {
+		$sql = "delete from sujet where id_sujet='$id_sujet'";
+		$requete = $this->db->prepare($sql);
+		$requete->execute();
+	}
 }

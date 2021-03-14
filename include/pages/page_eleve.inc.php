@@ -7,9 +7,17 @@
     <script type="text/javascript" src="../../javascript/script.js"></script>
 </head>
 <body>
-<!-- A U C U N   P H P   P O U R   L E   M O M E N T -->
+
+<?php $pdo = new Mypdo();
+$manager = new ReponseManager($pdo); ?>
+
 <!-- Quesiton 1 -->
+<<<<<<< HEAD
 <div class="question1">
+=======
+<?php if(empty($_POST['answer1']) && empty($_POST['unite1'])) { //premier appel ?>
+<div class="question">
+>>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
     <h1>Question 1</h1>
 
     <div class="rap">
@@ -18,6 +26,7 @@
     </div>
 
     <div class="sous-question">
+<<<<<<< HEAD
         <input type="number" id="answer1" name="answer" placeholder="Votre réponse">
         <select name="unite" id="unite-select1">
             <option value="">  Choisir l'unité  </option>
@@ -25,14 +34,49 @@
             <option value="newton">N</option>
             <option value="newtion_par_metre">N.m²</option>
         </select>
+=======
+        <form action="#" method=""POST">
+            <select name=unite1" ">
+                <option value="">  Choisir l'unité  </option>
+                <option value="metre">m</option>
+                <option value="newton">N</option>
+                <option value="newtion_par_metre">N.m²</option>
+            </select>
+        </form>
+        <input type="number" name="answer1" placeholder="Votre réponse">
+>>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
     </div>
+
     <!-- bouton enregistrer -->
     <div class="buttons">
         <div class="container">
-            <button class="btn effect01" target="_blank"><span>Enregistrer</span></button>
+            <button typ="submit" class="btn effect01" target="_blank"><span>Enregistrer</span></button>
         </div>
     </div>
 </div>
+
+<?php } else { //ajout dans la base de données}
+
+    $reponse = new Reponse($_POST);
+    $retour = $manager->add($reponse);
+
+    echo 'La réponse a été ajoutée';
+} ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Quesiton 2 -->
     <div class="question2">

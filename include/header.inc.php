@@ -58,12 +58,14 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
                 <li><a href="#">Sujets &dtrif;</a>
                     <ul class="dropdown">
                         <li><a href="index.php?page=3">Créer un sujet</a></li>
+                        <li><a href="index.php?page=8">Supprimer un Sujet</a></li>
                         <li><a href="#">Importer des images</a></li>
+                        <li><a href="index.php?page=9">Créer une correction</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Eleves &dtrif;</a>
                     <ul class="dropdown">
-                        <li><a href="index.php?page=3">Importer une liste d'élèves</a></li>
+                        <li><a href="index.php?page=4">Importer une liste d'élèves</a></li>
                         <li><a href="index.php?page=1">Importer le fichier excel des sujets</a></li>
                     </ul>
                 </li>
@@ -93,6 +95,21 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
       <div id="connect">
           <a href="index.php?page=3">Créer un sujet</a>
       </div>
+<<<<<<< HEAD
+=======
+      <div id="connect">
+          <a href="index.php?page=8">Supprimer un sujet</a>
+      </div>
+      <div id="connect">
+          <a href="index.php?page=4">Connexion</a>
+      </div>
+      <div id="connect">
+          <a href="index.php?page=5">page_eleve</a>
+      </div>
+      <div id="connect">
+          <a href="index.php?page=6">page_prof</a>
+      </div>
+>>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
 
   </div>
 

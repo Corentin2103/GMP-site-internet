@@ -1,71 +1,66 @@
 <?php
 class EtudiantManager{
-  private $db;
+    private $db;
 
-		public function __construct($db){
-			$this->db = $db;
-		}
+    public function __construct($db){
+        $this->db = $db;
+    }
+
     public function add($etudiant){
-          $requete = $this->db->prepare(
-          'INSERT INTO etudiant (per_num, etu_nom,etu_prenom,etu_annee) VALUES (:per_num, :etu_nom, :etu_prenom,:etu_annee);');
+        $requete = $this->db->prepare('INSERT INTO etudiant (per_num, etu_nom,etu_prenom,etu_annee) VALUES (:per_num, :etu_nom, :etu_prenom,:etu_annee);');
 
-          $requete->bindValue(':per_num',$etudiant->getPersNum());
-          $requete->bindValue(':etu_nom',$etudiant->getEtuNom());
-          $requete->bindValue(':etu_prenom',$etudiant->getEtuPrenom());
-          $requete->bindValue(':etu_annee',$etudiant->getEtuAnnee());
-          $retour=$requete->execute();
-          return $retour;
-      }
+        $requete->bindValue(':per_num',$etudiant->getPersNum());
+        $requete->bindValue(':etu_nom',$etudiant->getEtuNom());
+        $requete->bindValue(':etu_prenom',$etudiant->getEtuPrenom());
+        $requete->bindValue(':etu_annee',$etudiant->getEtuAnnee());
+        $retour=$requete->execute();
+        return $retour;
+    }
 
     public function getAllEtu(){
-            $listeEtu = array();
+        $listeEtu = array();
 
-            $sql = 'select per_num, dep_num , div_num FROM etudiant';
+        $sql = 'select per_num, dep_num , div_num FROM etudiant';
 
-            $requete = $this->db->prepare($sql);
-            $requete->execute();
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
 
-            while ($etudiant = $requete->fetch(PDO::FETCH_OBJ))
-                $listeEtu[] = new Etudiant($etudiant);
+        while ($etudiant = $requete->fetch(PDO::FETCH_OBJ))
+            $listeEtu[] = new Etudiant($etudiant);
 
-            $requete->closeCursor();
-            return $listeEtu;
-					}
-
-
+        $requete->closeCursor();
+        return $listeEtu;
+    }
 
     public function EstPresent($pers_num){
-      $sql = 'select per_num FROM etudiant WHERE per_num= "'.$pers_num.'"';
-      $requete = $this->db->prepare($sql);
-      $requete->execute();
+        $sql = 'select per_num FROM etudiant WHERE per_num= "'.$pers_num.'"';
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
 
-      while ($etudiant = $requete->fetch(PDO::FETCH_ASSOC)){
-          if($pers_num == $etudiant['per_num']){
+        while ($etudiant = $requete->fetch(PDO::FETCH_ASSOC)){
+            if($pers_num == $etudiant['per_num']){
             return true;
             $requete->closeCursor();
-          }
+            }
         }
         return false;
-      $requete->closeCursor();
-
+        $requete->closeCursor();
     }
     public function RecupEtudiant($pers_num){
 
-      $sql = 'select dep_num,div_num FROM etudiant WHERE per_num= "'.$pers_num.'"';
-      $requete = $this->db->prepare($sql);
-      $requete->execute();
-      return $requete->fetch();
+        $sql = 'select dep_num,div_num FROM etudiant WHERE per_num= "'.$pers_num.'"';
+        $requete = $this->db->prepare($sql);
+        $requete->execute();
+        return $requete->fetch();
     }
     public function updateEtudiant($etudiant){
-      $sql ='UPDATE etudiant SET dep_num= :dep_num , div_num =:div_num where per_num= :per_num ';
-      $requete = $this->db->prepare($sql);
-      $requete->bindValue(':dep_num',$etudiant->getDepNum());
-      $requete->bindValue(':div_num',$etudiant->getdivNum());
-      $requete->bindValue(':per_num',$etudiant->getPersNum());
-      $retour = $requete->execute();
-      $requete->closeCursor();
-      return $retour;
+        $sql ='UPDATE etudiant SET dep_num= :dep_num , div_num =:div_num where per_num= :per_num ';
+        $requete = $this->db->prepare($sql);
+        $requete->bindValue(':dep_num',$etudiant->getDepNum());
+        $requete->bindValue(':div_num',$etudiant->getdivNum());
+        $requete->bindValue(':per_num',$etudiant->getPersNum());
+        $retour = $requete->execute();
+        $requete->closeCursor();
+        return $retour;
     }
-
-
 }
