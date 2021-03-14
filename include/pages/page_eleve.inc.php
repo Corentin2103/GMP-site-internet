@@ -12,12 +12,12 @@
 $manager = new ReponseManager($pdo); ?>
 
 <!-- Quesiton 1 -->
-<<<<<<< HEAD
-<div class="question1">
-=======
+
+
+
 <?php if(empty($_POST['answer1']) && empty($_POST['unite1'])) { //premier appel ?>
-<div class="question">
->>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
+<div class="question1">
+
     <h1>Question 1</h1>
 
     <div class="rap">
@@ -26,7 +26,7 @@ $manager = new ReponseManager($pdo); ?>
     </div>
 
     <div class="sous-question">
-<<<<<<< HEAD
+
         <input type="number" id="answer1" name="answer" placeholder="Votre réponse">
         <select name="unite" id="unite-select1">
             <option value="">  Choisir l'unité  </option>
@@ -34,17 +34,10 @@ $manager = new ReponseManager($pdo); ?>
             <option value="newton">N</option>
             <option value="newtion_par_metre">N.m²</option>
         </select>
-=======
-        <form action="#" method=""POST">
-            <select name=unite1" ">
-                <option value="">  Choisir l'unité  </option>
-                <option value="metre">m</option>
-                <option value="newton">N</option>
-                <option value="newtion_par_metre">N.m²</option>
-            </select>
-        </form>
-        <input type="number" name="answer1" placeholder="Votre réponse">
->>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
+
+
+
+
     </div>
 
     <!-- bouton enregistrer -->

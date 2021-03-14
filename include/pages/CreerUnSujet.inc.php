@@ -10,7 +10,7 @@
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
-<<<<<<< HEAD
+
   <?php
   $pdo = new Mypdo();
   $sujetManager = new sujetManager($pdo);
@@ -29,7 +29,7 @@
         header("Location : index.php?page=3");
       }
     } ?>
-=======
+
 <?php
 $pdo = new Mypdo();
 $sujetManager = new sujetManager($pdo);
@@ -46,7 +46,7 @@ if (empty($_GET["id_sujet"])){ //Choix du sujet
 			$lastInsertId = $pdo->lastInsertId();
 		}
 	} ?>
->>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
+
     <h1>Veuillez choisir un sujet</h1>
     <table>
       <?php
@@ -72,7 +72,7 @@ if (empty($_GET["id_sujet"])){ //Choix du sujet
     </form>
   <?php }else{ ?>
     <form id="insert" method="post">
-<<<<<<< HEAD
+
       <input name="titre" type="text" value="<?php
       echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
       ?>" />
@@ -115,14 +115,8 @@ if (empty($_GET["id_sujet"])){ //Choix du sujet
     }
     ?>
   </body>
-  <script>
-  var quill = new Quill('#editor-container', {
-    modules: {
-      toolbar: toolbarOptions
-    },
-    theme: 'snow'
-  });
-=======
+
+
         <input name="titre" type="text" value="<?php
 		echo $sujetManager->getSujetById($_GET["id_sujet"])["titre"];
 		?>" />
@@ -199,8 +193,6 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty(
         },
         theme: 'snow'
     });
->>>>>>> 5bf8563a61850c6a38e370077f451800a655a437
-
   function transforme(){
     var sujet_file = document.querySelector('input[name=sujet_file]');
     var sujet_file_html = document.querySelector('input[name=sujet_file_html]');
