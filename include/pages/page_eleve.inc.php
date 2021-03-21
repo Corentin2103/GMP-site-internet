@@ -9,7 +9,9 @@
 <body>
 
 <?php $pdo = new Mypdo();
-$manager = new ReponseManager($pdo); ?>
+$manager = new ReponseManager($pdo);
+$uniteManager = new UniteManager($pdo);
+$listeUnite = $uniteManager->getLIst();?>
 
 <!-- Quesiton 1 -->
 
@@ -26,18 +28,14 @@ $manager = new ReponseManager($pdo); ?>
     </div>
 
     <div class="sous-question">
-
         <input type="number" id="answer1" name="answer" placeholder="Votre réponse">
-        <select name="unite" id="unite-select1">
-            <option value="">  Choisir l'unité  </option>
-            <option value="metre">m</option>
-            <option value="newton">N</option>
-            <option value="newtion_par_metre">N.m²</option>
+
+        <select name="unite" id="unite1">
+            <?php
+                foreach ($listeUnite as $unite) {?>
+                    <option value="<?php echo $unite->getUniteNom(); ?>"><?php echo $unite-getUniteNom();?>></option>
+                <?php } ?>>
         </select>
-
-
-
-
     </div>
 
     <!-- bouton enregistrer -->
@@ -52,6 +50,7 @@ $manager = new ReponseManager($pdo); ?>
 
     $reponse = new Reponse($_POST);
     $retour = $manager->add($reponse);
+    echo 'Réponse enregistrée';
 
     echo 'La réponse a été ajoutée';
 } ?>
