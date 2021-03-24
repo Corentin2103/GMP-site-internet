@@ -9,7 +9,13 @@
 	padding-top: 5%;
 	text-align: center;
 }*/
-
+.Modification{
+	padding: 50px;
+}
+.Modification label{
+	margin-right : 2%;
+		margin-left : 2%;
+}
 div h1 {
 	font-size: 120%;
 	text-align: left;

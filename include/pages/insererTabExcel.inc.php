@@ -1,4 +1,4 @@
-
+<div class = "header">
 
 <h1>Ajouter des variables</h1>
 
@@ -87,7 +87,7 @@ if(!empty($_POST["Nom"])){
     <tr>
       <?php
       $db = new MyPdo();
-      
+
       $donnees = lire_csv('Excel/'.$uniqueName.$fileExt);
 
       $k = 0;
@@ -122,3 +122,4 @@ if(!empty($_POST["Nom"])){
   <?php
 }
 ?>
+</div>

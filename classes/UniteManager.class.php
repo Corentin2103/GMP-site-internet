@@ -19,6 +19,7 @@ class UniteManager{
 
     public function getList() {
         $req = $this->db->query('SELECT unite_nom, unite_num FROM unite');
+        	$liste = array();
         while ($unite = $req->fetch(PDO::FETCH_OBJ)) {
             $liste[] = new Unite($unite);
         }

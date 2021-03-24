@@ -19,6 +19,9 @@ $professeurManager = new ProfesseurManager($pdo);
 
 if($etudiantManager->estPresent($_SESSION["per_num"])){
 	include_once('pages/accueil_eleve.inc.php');
+}
+if($professeurManager->estPresent($_SESSION["per_num"])){
+	include_once('pages/page_prof.inc.pho');
 }else{
 	include_once('pages/connexion.inc.php');
 }
@@ -64,15 +67,19 @@ if($etudiantManager->estPresent($_SESSION["per_num"])){
 						include("pages/accueil_eleve.inc.php");
 						break;
 
-		case 7:
-			include("pages/deconnexion.inc.php");
-			break;
-		case 8:
+
+		case 10:
 			include("pages/SupprimerSujet.inc.php");
 			break;
-		case 9:
+		case 11:
 			include("pages/creerUneCorrection.inc.php");
 			break;
+			case 12:
+				include("pages/afficheFormules.inc.php");
+				break;
+				case 13:
+					include("pages/page_prof.inc.php");
+					break;
 
 
 

@@ -119,51 +119,7 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
       </form>
 
     </div>
-    <div class="tableau calculatrice">
-    <table>
-      <tr>
-        <th>
-          Numéro équation
-        </th>
-        <th>
-          Libellé équation
-        </th>
-        <th>
-          équation
-        </th>
-        <th>
-          équation avec remplacement
-        </th>
-      </tr>
-      <?php
 
-      $listeFormule = $formuleManager->getAllForm();
-      $listeLib = $formuleManager->getAllLib();
-      foreach($listeFormule as $formule){
-        $replace = $formule->getEquation();
-        foreach($listeLib as $libelle){
-
-          $var = strpos($formule->getEquation(), $libelle["libEq"]);
-          if($var != null){
-            $replace = str_replace($libelle["libEq"], $formuleManager->getEqByLib($libelle["libEq"])["equation"],$formule->getEquation());
-
-          }
-        }
-
-        ?>
-        <tr>
-          <td><?php echo $formule->getNumEq() ?></td>
-          <td><?php echo $formule->getLibEq() ?></td>
-          <td><?php echo $formule->getEquation() ?></td>
-          <td><?php echo $replace ?></td>
-          <td><a href="index.php?page=2&SuppNum_eq=<?php echo $formule->getNumEq() ?>"><button type="" class="">Supprimer</button></a></td>
-          <td><a href="index.php?page=2&ModifNum_eq=<?php echo $formule->getNumEq() ?>"><button type="" class="">Modifier</button></a></td>
-        </tr>
-        <?php
-      }
-      ?>
-    </table>
-  </div>
   <div class="tableau">
     <table>
       <tr>
@@ -233,15 +189,16 @@ if(!empty($_POST["LibEq"]) && !empty($_POST["Equation"]) && !empty($_POST["marge
     $Equation = $formuleManager->getEq($_GET["ModifNum_eq"]);
 
     ?>
-
+    <div class="Modification">
     <form method="post" action="#">
 
-      <p>Modification</p>
-      Libellé<input type="text" id="ModifLib" name="ModifLib" value="<?php echo $formuleManager->getLibEq($_GET["ModifNum_eq"])["libEq"] ?>"/>
-      Equation<input type="text" id="ModifEq"  name="ModifEq" value="<?php echo $formuleManager->getEq($_GET["ModifNum_eq"])["equation"] ?>"/>
-      +/- <input id="marge" name="marge" value="<?php echo $formuleManager->getMarge($_GET["ModifNum_eq"])["marge"] ?>"/>
+      <label><strong>Modification</strong></label><br>
+      <label>Libellé</label><input type="text" id="ModifLib" name="ModifLib" value="<?php echo $formuleManager->getLibEq($_GET["ModifNum_eq"])["libEq"] ?>"/>
+      <label>Equation</label><input type="text" id="ModifEq"  name="ModifEq" value="<?php echo $formuleManager->getEq($_GET["ModifNum_eq"])["equation"] ?>"/>
+      <label>+/-</label> <input id="marge" name="marge" value="<?php echo $formuleManager->getMarge($_GET["ModifNum_eq"])["marge"] ?>"/>
       <input type="submit" value="Valider">
     </form>
+  </div>
     <?php
 
   }

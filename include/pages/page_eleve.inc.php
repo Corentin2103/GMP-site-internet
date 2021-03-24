@@ -30,11 +30,11 @@ $listeUnite = $uniteManager->getLIst();?>
     <div class="sous-question">
         <input type="number" id="answer1" name="answer" placeholder="Votre réponse">
 
-        <select name="unite" id="unite1">
-            <?php
-                foreach ($listeUnite as $unite) {?>
-                    <option value="<?php echo $unite->getUniteNom(); ?>"><?php echo $unite-getUniteNom();?>></option>
-                <?php } ?>>
+        <select name="unite" id="unite-select2">
+            <option value="">  Choisir l'unité  </option>
+            <option value="metre">m</option>
+            <option value="newton">N</option>
+            <option value="newtion_par_metre">N.m²</option>
         </select>
     </div>
 

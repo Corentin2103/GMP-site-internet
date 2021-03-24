@@ -48,19 +48,19 @@ if($professeurManager->estPresent($_SESSION["per_num"])){  ?>
     <body>
         <nav role="navigation" class="primary-navigation">
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="index.php?page=13">Accueil</a></li>
                 <li><a href="#">Formules &dtrif;</a>
                     <ul class="dropdown">
                         <li><a href="index.php?page=2">Créer une formule</a></li>
-                        <li><a href="#">Voir les formules</a></li>
+                        <li><a href="index.php?page=12">Voir les formules</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Sujets &dtrif;</a>
                     <ul class="dropdown">
                         <li><a href="index.php?page=3">Créer un sujet</a></li>
-                        <li><a href="index.php?page=8">Supprimer un Sujet</a></li>
+                        <li><a href="index.php?page=10">Supprimer un Sujet</a></li>
                         <li><a href="#">Importer des images</a></li>
-                        <li><a href="index.php?page=9">Créer une correction</a></li>
+                        <li><a href="index.php?page=11">Créer une correction</a></li>
                     </ul>
                 </li>
                 <li><a href="#">Eleves &dtrif;</a>

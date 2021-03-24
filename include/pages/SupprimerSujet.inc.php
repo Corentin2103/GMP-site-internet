@@ -5,6 +5,7 @@
 	<title>Supprimer un Sujet</title>
 </head>
 <body>
+	<div class ="header">
 <h1>Supprimer un sujet</h1>
 <?php
 $pdo = new Mypdo();
@@ -34,3 +35,5 @@ if (empty($_GET["id_sujet"])){
 	$sujetManager->supprimerSujet($_GET["id_sujet"]);
 	header("Location: index.php?page=8");
 }
+?>
+</div>

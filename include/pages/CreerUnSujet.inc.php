@@ -10,6 +10,7 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 <body>
+  <div class = "header">
 <?php
 $pdo = new Mypdo();
 $sujetManager = new sujetManager($pdo);
@@ -118,6 +119,7 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty(
 	<?php
 }
 ?>
+</div>
 </body>
 <script>
     var quill = new Quill('#editor-container', {
@@ -137,4 +139,5 @@ if (!empty($_POST["sujet_file"]) && !empty($_POST["sujet_file_html"]) && !empty(
         return false;
     }
 </script>
+
 </html>
